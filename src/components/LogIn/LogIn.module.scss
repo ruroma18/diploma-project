@@ -1,0 +1,30 @@
+.container {
+  min-height: 100vh;
+  background-color: #9dc2e5;
+}
+
+.imgWrapper {
+  display: flex;
+  margin: 0 auto;
+  height: 200px;
+  width: 200px;
+  padding: 20px 0;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.heading {
+  font-size: 2em;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.text {
+  font-size: 0.8em;
+}
