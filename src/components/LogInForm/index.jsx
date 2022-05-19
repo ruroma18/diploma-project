@@ -1,11 +1,14 @@
+import React, { useState, useEffect, useContext } from "react";
 import { Formik, Form, Field } from "formik";
-import React, { useState, useEffect } from "react";
-import styles from "./LogInForm.module.scss";
 import { Navigate } from "react-router-dom";
+import { getUsers } from "api";
+import styles from "./LogInForm.module.scss";
+import { UserContext } from "contexts";
 
 const LogInForm = () => {
   const [users, setUsers] = useState([]);
   const [currentUserRole, setCurrentUserRole] = useState(null);
+  const [setCurrentUser] = useContext(UserContext);
 
   const initialValues = {
     login: "",
@@ -13,10 +16,7 @@ const LogInForm = () => {
   };
 
   useEffect(() => {
-    fetch("/data.json")
-      .then((res) => res.json())
-      .then((data) => setUsers(data))
-      .catch((error) => console.log(error));
+    getUsers().then((data) => setUsers(data));
   }, []);
 
   const usersMap = new Map();
@@ -25,9 +25,18 @@ const LogInForm = () => {
     usersMap.set(user.login, user.role);
   });
 
+  const globalUser = (user) => {
+    setCurrentUser(user)
+  }
+
   const logIn = ({ login }) => {
     if (usersMap.has(login)) {
       setCurrentUserRole(usersMap.get(login));
+      users.forEach((user) => {
+        if (user.login === login) {
+          globalUser(user);
+        }
+      });
     }
 
     return <div>ERROR</div>;

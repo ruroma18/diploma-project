@@ -4,15 +4,17 @@
     "login": "teacher",
     "password": "teacher",
     "role": "teacher",
-    "firstName": "Kate",
-    "lastName": "Egorova"
+    "firstName": "Катерина",
+    "lastName": "Єгорова",
+    "imgSrc": "https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2018-09/shutterstock_648907024.jpg?itok=0hb44OrI"
   },
   {
     "id": 2,
     "login": "student",
     "password": "student",
     "role": "student",
-    "firstName": "Helen",
-    "lastName": "Shevchenko"
+    "firstName": "Андрій",
+    "lastName": "Шевченко",
+    "imgSrc": "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934"
   }
 ]

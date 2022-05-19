@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./LogIn.module.scss";
-import mainPic from "./img/main.png";
+import mainPic from "img/main.png";
 import LogInForm from "../LogInForm";
 
 const LogIn = () => {
