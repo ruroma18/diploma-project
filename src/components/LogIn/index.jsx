@@ -11,7 +11,6 @@ const LogIn = () => {
       </div>
       <div className={styles.textContainer}>
         <h1 className={styles.heading}>Вітаю на UniStudy</h1>
-        <p className={styles.text}>Увійдіть щоб продовжити</p>
       </div>
       <LogInForm />
     </div>

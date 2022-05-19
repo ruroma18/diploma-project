@@ -1,9 +1,9 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MainPage from './pages/Main'
-import StudentPage from './pages/Student'
-import TeacherPage from './pages/Teacher'
-import CoursePage from './pages/Course'
+import MainPage from 'pages/Main'
+import StudentPage from 'pages/Student'
+import TeacherPage from 'pages/Teacher'
+import CoursePage from 'pages/Course'
 
 function App() {
   return (

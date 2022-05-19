@@ -1,27 +1,54 @@
 import { Formik, Form, Field } from "formik";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./LogInForm.module.scss";
+import { Navigate } from "react-router-dom";
 
 const LogInForm = () => {
+  const [users, setUsers] = useState([]);
+  const [currentUserRole, setCurrentUserRole] = useState(null);
+
   const initialValues = {
     login: "",
     password: "",
   };
 
-  const logIn = (values) => {
-    console.log(values)
-  }
+  useEffect(() => {
+    fetch("/data.json")
+      .then((res) => res.json())
+      .then((data) => setUsers(data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  const usersMap = new Map();
+
+  users.forEach((user) => {
+    usersMap.set(user.login, user.role);
+  });
+
+  const logIn = ({ login }) => {
+    if (usersMap.has(login)) {
+      setCurrentUserRole(usersMap.get(login));
+    }
+
+    return <div>ERROR</div>;
+  };
 
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={logIn}>
-        {(formikProps) => {
+        {() => {
           return (
             <Form className={styles.container}>
-              <h2 className={styles.heading}>Увійти</h2>
-              <Field name="login" className={styles.field} type="text" placeholder="Логін" />
+              {currentUserRole && <Navigate to={`/${currentUserRole}`} />}
+              <h2 className={styles.heading}>Увійдіть щоб продовжити</h2>
               <Field
-              name="password"
+                name="login"
+                className={styles.field}
+                type="text"
+                placeholder="Логін"
+              />
+              <Field
+                name="password"
                 className={styles.field}
                 type="password"
                 placeholder="Пароль"

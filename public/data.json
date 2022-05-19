@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "login": "teacher",
+    "password": "teacher",
+    "role": "teacher",
+    "firstName": "Kate",
+    "lastName": "Egorova"
+  },
+  {
+    "id": 2,
+    "login": "student",
+    "password": "student",
+    "role": "student",
+    "firstName": "Helen",
+    "lastName": "Shevchenko"
+  }
+]
