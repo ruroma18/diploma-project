@@ -1,4 +1,4 @@
-const getUsers = () => fetch("/data.json")
+const getUsers = () => fetch("/users.json")
   .then((res) => res.json())
   .catch((error) => console.log(error));
 
