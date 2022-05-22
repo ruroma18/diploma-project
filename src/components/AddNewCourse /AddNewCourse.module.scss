@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  width: 280px;
+  height: 200px;
+  background-color: #d6d3d3;
+  border: 2px solid #d6d3d3;
+  transition: opacity 0.4 ease;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.addIcon {
+  font-size: 3em;
+  color: #a0a0a0;
+}
