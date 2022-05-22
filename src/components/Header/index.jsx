@@ -2,15 +2,16 @@ import { useContext } from "react";
 import logo from "img/main.png";
 import styles from "./Header.module.scss";
 import { UserContext } from "contexts";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const currentUser = useContext(UserContext);
   console.log(currentUser);
   const fullName = `${currentUser[1].firstName} ${currentUser[1].lastName}`;
+  const navigate = useNavigate();
 
-  const LogOut = () => {
-    <Navigate to="/" />;
+  const logOut = () => {
+    navigate("/")
   };
 
   return (
@@ -27,7 +28,7 @@ const Header = () => {
           alt={fullName}
         />
       </div>
-      <button className={styles.btnLogOut} onClick={() => LogOut()}>
+      <button className={styles.btnLogOut} onClick={logOut}>
         Вихід
       </button>
     </header>
