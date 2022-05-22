@@ -32,6 +32,8 @@ const CourseFilling = () => {
             >
               Розділ {courseItem.id}. {courseItem.name}
             </h3>
+            { courseItem.text !== false &&
+            <>
             <p
               className={cx({
                 [styles.themeContentHidden]: !courseItem.hidden,
@@ -48,7 +50,7 @@ const CourseFilling = () => {
               <TaskIcon />
               <p className={styles.materialLink}>Завдання до розділу</p>
               </div>
-            </p>
+            </p></>}
           </li>
         ))}
       </ul>
