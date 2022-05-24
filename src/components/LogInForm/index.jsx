@@ -26,20 +26,20 @@ const LogInForm = () => {
   });
 
   const globalUser = (user) => {
-    setCurrentUser(user)
-  }
+    setCurrentUser(user);
+  };
 
-  const logIn = ({ login }) => {
-    if (usersMap.has(login)) {
-      setCurrentUserRole(usersMap.get(login));
-      users.forEach((user) => {
-        if (user.login === login) {
-          globalUser(user);
+  const logIn = ({ login, password }) => {
+    users.forEach((user) => {
+      if (user.login === login && user.password === password) {
+        if (usersMap.has(login)) {
+          setCurrentUserRole(usersMap.get(login));
         }
-      });
-    }
-
-    return <div>ERROR</div>;
+        globalUser(user);
+      } else if(user.login === login || user.password === password) {
+        alert("Невірний логін або пароль!");
+      }
+    });
   };
 
   return (

@@ -27,7 +27,7 @@
     "id": 5,
     "name": "Асемитричне шифрування",
     "textLink": "https://docs.google.com/document/d/1PQyRj5aHCtIqT8nwGx3-JbprRtw69Si6/edit?usp=sharing&ouid=105245992496635210123&rtpof=true&sd=true",
-    "task": "",
+    "task": true,
     "hidden": false
   },
   {

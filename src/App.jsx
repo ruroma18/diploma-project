@@ -10,7 +10,6 @@ import Task from "pages/Task";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  console.log(currentUser)
   
   return (
     <Router>

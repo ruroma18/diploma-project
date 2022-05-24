@@ -4,9 +4,11 @@ import ArticleIcon from "@mui/icons-material/Article";
 import TaskIcon from "@mui/icons-material/Task";
 import styles from "./CourseFilling.module.scss";
 import cx from "classnames";
+import { useNavigate } from "react-router-dom";
 
 const CourseFilling = () => {
   const [course, setCourse] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCourse().then((data) => setCourse(data));
@@ -19,6 +21,8 @@ const CourseFilling = () => {
     }));
     return setCourse(newCourse);
   };
+
+  const startInteraativeTask = () => navigate("/task")
 
   return (
     <article className={styles.container}>
@@ -34,7 +38,7 @@ const CourseFilling = () => {
             </h3>
             { courseItem.text !== false &&
             <>
-            <p
+            <section
               className={cx({
                 [styles.themeContentHidden]: !courseItem.hidden,
                 [styles.themeContent]: courseItem.hidden,
@@ -48,9 +52,9 @@ const CourseFilling = () => {
               </div>
               <div className={styles.materialWrapper}>
               <TaskIcon />
-              <p className={styles.materialLink}>Завдання до розділу</p>
+              <p className={styles.materialLink} onClick={startInteraativeTask}>Завдання до розділу</p>
               </div>
-            </p></>}
+            </section></>}
           </li>
         ))}
       </ul>
