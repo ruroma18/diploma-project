@@ -2,8 +2,8 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate(models) {
-      // define association here
+    static associate({Course}) {
+      User.hasMany(Course, {foreignKey: 'teacherId'})
     }
   }
   User.init({
@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     role: {
       allowNull: false,
-      type: DataTypes.ENUM('admin', 'teacher', 'student')
+      type: DataTypes.ENUM('teacher', 'student')
     },
     photo: {
       type: DataTypes.STRING
