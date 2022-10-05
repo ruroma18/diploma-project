@@ -29,7 +29,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       role: {
-        type: Sequelize.ENUM('admin', 'teacher', 'student')
+        type: Sequelize.ENUM('teacher', 'student')
       },
       photo: {
         type: Sequelize.STRING
