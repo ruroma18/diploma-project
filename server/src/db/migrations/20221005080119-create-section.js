@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false
       },
       courseId: {
-        filed: 'course_id',
+        field: 'course_id',
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

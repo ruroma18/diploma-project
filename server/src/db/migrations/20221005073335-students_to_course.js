@@ -5,7 +5,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('students_to_coruses', {
       studentId: {
-        filed: 'student_id',
+        field: 'student_id',
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,

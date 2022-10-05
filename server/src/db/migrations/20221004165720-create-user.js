@@ -10,12 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       firstName: {
-        filed: 'first_name',
+        field: 'first_name',
         allowNull: false,
         type: Sequelize.STRING
       },
       lastName: {
-        filed: 'last_name',
+        field: 'last_name',
         allowNull: false,
         type: Sequelize.STRING
       },
