@@ -3,7 +3,11 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate({Course}) {
-      User.hasMany(Course, {foreignKey: 'teacherId'})
+      User.hasMany(Course, {foreignKey: 'userId'}),
+      User.belongsToMany(Course, {
+        through: 'studens_to_course',
+        foreignKey: 'userId'
+      })
     }
   }
   User.init({
@@ -50,7 +54,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.ENUM('teacher', 'student')
     },
-    photo: {
+    photoPath: {
+      field: 'photo_path',
       type: DataTypes.STRING
     },
   }, {
