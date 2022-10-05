@@ -2,8 +2,8 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Material extends Model {
-    static associate(models) {
-
+    static associate({ Section }) {
+      Material.belongsTo(Section, {foreignKey: 'material_id'})
     }
   }
   Material.init({
