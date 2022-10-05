@@ -3,8 +3,12 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Course extends Model {
 
-    static associate({ User }) {
-      Course.belongsTo(User, {foreignKey: 'teacherId'})
+    static associate({ User, Section }) {
+      Course.belongsTo(User, {foreignKey: 'userId'}),
+      Course.belongsToMany(User, {
+        foreignKey: 'userId',
+      }),
+      Course.hasMany(Section, {foreignKey: 'courseId'})
     }
   }
   Course.init({
@@ -18,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     imgPath: {
+      field: 'img_path',
       type: DataTypes.STRING
     }
   }, {
