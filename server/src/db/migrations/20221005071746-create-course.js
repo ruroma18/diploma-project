@@ -15,13 +15,16 @@ module.exports = {
       },
       teacherId: {
         field: 'teacher_id',
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: {
-            tableName: 'users'
+            tableName: 'users',
+            key: 'id'
           }
-        }
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade'
       },
       imgPath : {
         field: 'img_path',
