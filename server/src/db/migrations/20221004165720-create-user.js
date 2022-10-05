@@ -29,6 +29,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       role: {
+        allowNull: false,
         type: Sequelize.ENUM('teacher', 'student')
       },
       photoPath: {
