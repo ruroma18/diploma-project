@@ -13,14 +13,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      docPath: {
-        field: 'doc_path',
-        type: Sequelize.STRING
-      },
-      taskPath: {
-        filed: 'task_path',
-        type: Sequelize.STRING
-      },
       courseId: {
         filed: 'course_id',
         type: Sequelize.INTEGER,

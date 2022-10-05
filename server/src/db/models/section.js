@@ -15,14 +15,6 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
         notNull: true
       }
-    },
-    docPath: {
-      field: 'doc_path',
-      type: DataTypes.STRING
-    },
-    taskPath: {
-      field: 'task_path',
-      type: DataTypes.STRING
     }
   }, {
     sequelize,
