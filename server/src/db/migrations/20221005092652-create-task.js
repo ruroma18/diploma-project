@@ -18,6 +18,19 @@ module.exports = {
         field: 'task_path',
         type: Sequelize.STRING
       },
+      sectionId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        field: 'section_id',
+        references: {
+          model: {
+            tableName: 'sections',
+            key: 'id'
+          }
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade'
+      },
       createdAt: {
         field: 'created_at',
         allowNull: false,
