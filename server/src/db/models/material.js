@@ -1,5 +1,6 @@
 'use strict';
 const { Model } = require('sequelize');
+const { VIDEO, FILE } = require('../../constants');
 module.exports = (sequelize, DataTypes) => {
   class Material extends Model {
     static associate({ Section }) {
@@ -12,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     type: {
-      type: DataTypes.ENUM('video', 'file'),
+      type: DataTypes.ENUM(VIDEO, FILE),
       allowNull: false
     },
     filePath: {

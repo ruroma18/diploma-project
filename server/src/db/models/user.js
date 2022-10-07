@@ -1,5 +1,6 @@
 'use strict';
 const { Model } = require('sequelize');
+const { TEACHER, STUDENT } = require('../../constants');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate({Course, Task}) {
@@ -56,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     role: {
       allowNull: false,
-      type: DataTypes.ENUM('teacher', 'student')
+      type: DataTypes.ENUM(TEACHER, STUDENT)
     },
     photoPath: {
       field: 'photo_path',
