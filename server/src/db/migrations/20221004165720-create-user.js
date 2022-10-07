@@ -1,4 +1,7 @@
 'use strict';
+
+const { TEACHER, STUDENT } = require('../../constants');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -30,7 +33,7 @@ module.exports = {
       },
       role: {
         allowNull: false,
-        type: Sequelize.ENUM('teacher', 'student')
+        type: Sequelize.ENUM(TEACHER, STUDENT)
       },
       photoPath: {
         field: 'photo_path',

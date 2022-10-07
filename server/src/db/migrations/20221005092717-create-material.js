@@ -1,4 +1,7 @@
 'use strict';
+
+const { VIDEO, FILE } = require('../../constants');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -15,7 +18,7 @@ module.exports = {
       },
       type: {
         allowNull: false,
-        type: Sequelize.ENUM('video', 'file')
+        type: Sequelize.ENUM(VIDEO, FILE)
       },
       file_path: {
         field: 'file_path',
