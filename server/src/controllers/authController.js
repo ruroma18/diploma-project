@@ -1,5 +1,6 @@
 const createHttpError = require('http-errors');
-const { User } = require('../db/models');
+const { User, RefreshToken } = require('../db/models');
+const authService = require('../services/authService');
 
 module.exports.register = async (req, res, next) => {
   try {
@@ -7,7 +8,9 @@ module.exports.register = async (req, res, next) => {
 
     const user = await User.create(body);
 
-    res.status(200).send({ data: user });
+    const sessionData = await authService.createSession(user);
+
+    res.status(200).send(sessionData);
 
   } catch (error) {
     next(error);
@@ -21,18 +24,35 @@ module.exports.login = async (req, res, next) => {
 
     const user = await User.findOne({ where: { email } });
 
+
     if (!user) {
       return next(createHttpError(401, 'Invalid data'));
     }
 
-    if(user.password !== password) {
+    if (user.password !== password) {
       return next(createHttpError(401, 'Invalid data'));
     }
 
-    res.status(200).send({ data: user });
+    const sessionData = await authService.createSession(user);
+
+    res.status(200).send(sessionData);
 
   } catch (error) {
     next(error);
 
   }
 };
+
+module.exports.refresh = async (req, res, next) => {
+  const { body: { refreshToken } } = req;
+
+  const refreshTokenInstance = await RefreshToken.findOne({ where: { token: refreshToken } });
+
+  if(!refreshTokenInstance) {
+    return next(createHttpError(401, 'Invalid data'));
+  }
+
+  const sessionData = authService.refreshSession(refreshTokenInstance);
+
+  res.status(200).send({ sessionData });
+}
