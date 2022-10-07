@@ -10,7 +10,7 @@ PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use('/public', express.static('public'));
-app.use(router);
+app.use('/api', router);
 
 const server = http.createServer(app);
 
