@@ -39,6 +39,11 @@ module.exports = {
         field: 'photo_path',
         type: Sequelize.STRING
       },
+      accessToken: {
+        field: 'access_token',
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
       createdAt: {
         field: 'created_at',
         allowNull: false,
