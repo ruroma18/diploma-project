@@ -3,16 +3,17 @@ const { Model } = require('sequelize');
 const { TEACHER, STUDENT } = require('../../constants');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate({Course, Task}) {
-      User.hasMany(Course, {foreignKey: 'user_id'}),
+    static associate({Course, Task, RefreshToken}) {
+      User.hasMany(Course, {foreignKey: 'userId'}),
       User.belongsToMany(Course, {
         through: 'students_to_coruses',
-        foreignKey: 'user_id'
+        foreignKey: 'userId'
       }),
       User.belongsToMany(Task, {
-        foreignKey: 'user_id',
+        foreignKey: 'userId',
         through: 'students_to_tasks'
       })
+      User.hasMany(RefreshToken, {foreignKey: 'userId'})
     }
   }
   User.init({
@@ -63,6 +64,11 @@ module.exports = (sequelize, DataTypes) => {
       field: 'photo_path',
       type: DataTypes.STRING
     },
+    accessToken: {
+      field: 'access_token',
+      type: DataTypes.TEXT,
+      allowNull: true
+    }
   }, {
     underscored: true,
     sequelize,

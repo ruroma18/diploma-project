@@ -3,9 +3,9 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Section extends Model {
     static associate({ Course, Material, Task  }) {
-      Section.belongsTo(Course, {foreignKey: 'section_id'}),
-      Section.hasMany(Material, {foreignKey: 'section_id'}),
-      Section.hasMany(Task, {foreignKey: 'section_id'})
+      Section.belongsTo(Course, {foreignKey: 'sectionId'}),
+      Section.hasMany(Material, {foreignKey: 'sectionId'}),
+      Section.hasMany(Task, {foreignKey: 'sectionId'})
     }
   }
   Section.init({

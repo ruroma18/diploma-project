@@ -4,7 +4,7 @@ const { VIDEO, FILE } = require('../../constants');
 module.exports = (sequelize, DataTypes) => {
   class Material extends Model {
     static associate({ Section }) {
-      Material.belongsTo(Section, {foreignKey: 'material_id'})
+      Material.belongsTo(Section, {foreignKey: 'materialId'})
     }
   }
   Material.init({

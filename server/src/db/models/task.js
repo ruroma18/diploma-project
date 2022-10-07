@@ -3,10 +3,10 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Task extends Model {
     static associate({ Section, User }) {
-      Task.belongsTo(Section, {foreignKey: 'task_id'})
+      Task.belongsTo(Section, {foreignKey: 'taskId'})
       Task.belongsToMany(User, {
         through: 'students_to_tasks',
-        foreignKey: 'task_id'})
+        foreignKey: 'taskId'})
     }
   }
   Task.init({
