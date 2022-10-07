@@ -23,10 +23,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         field: 'section_id',
         references: {
-          model: {
-            tableName: 'sections',
+          model: 'sections',
             key: 'id'
-          }
         },
         onDelete: 'cascade',
         onUpdate: 'cascade'

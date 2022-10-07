@@ -10,10 +10,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
         references: {
-          model: {
-            tableName: 'users',
-            key: 'id'
-          }
+          model: 'users',
+          key: 'id'
         },
         onDelete: 'cascade',
         onUpdate: 'cascade'
@@ -24,10 +22,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
         references: {
-          model: {
-            tableName: 'tasks',
-            key: 'id'
-          }
+          model: 'tasks',
+          key: 'id'
         },
         onDelete: 'cascade',
         onUpdate: 'cascade'

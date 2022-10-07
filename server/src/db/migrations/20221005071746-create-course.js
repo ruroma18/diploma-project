@@ -18,10 +18,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: {
-            tableName: 'users',
-            key: 'id'
-          }
+          model: 'users',
+          key: 'id'
         },
         onDelete: 'cascade',
         onUpdate: 'cascade'
