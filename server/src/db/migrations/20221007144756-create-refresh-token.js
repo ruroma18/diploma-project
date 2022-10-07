@@ -14,6 +14,7 @@ module.exports = {
         allowNull: false
       },
       userId: {
+        field: 'user_id',
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -24,10 +25,12 @@ module.exports = {
         onUpdate: 'cascade'
       },
       createdAt: {
+        field: 'created_at',
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
+        field: 'updated_at',
         allowNull: false,
         type: Sequelize.DATE
       }
