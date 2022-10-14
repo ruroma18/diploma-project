@@ -44,13 +44,7 @@ module.exports.login = async (req, res, next) => {
 };
 
 module.exports.refresh = async (req, res, next) => {
-  const { body: { refreshToken } } = req;
-
-  const refreshTokenInstance = await RefreshToken.findOne({ where: { token: refreshToken } });
-
-  if(!refreshTokenInstance) {
-    return next(createHttpError(401, 'Invalid data'));
-  }
+  const refreshTokenInstance = req;
 
   const sessionData = authService.refreshSession(refreshTokenInstance);
 
