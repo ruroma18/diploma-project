@@ -1,60 +1,38 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import { Formik, Form, Field } from "formik";
-import { Navigate } from "react-router-dom";
-import { getUsers } from "api";
 import styles from "./LogInForm.module.scss";
-import { UserContext } from "contexts";
+import { useDispatch, useSelector } from "react-redux";
+import { getToken } from "utils/helperFunctions";
+import history from "utils/history";
+import { login } from "redux/features/auth/authThunk";
 
 const LogInForm = () => {
-  const [users, setUsers] = useState([]);
-  const [currentUserRole, setCurrentUserRole] = useState(null);
-  const [setCurrentUser] = useContext(UserContext);
+  const dispatch = useDispatch();
+  const { token, userData } = useSelector((state) => state.auth);
+  
+  if(token || getToken()){
+    history.push(`/${userData.role}`)
+  }
 
   const initialValues = {
-    login: "",
+    email: "",
     password: "",
   };
 
-  useEffect(() => {
-    getUsers().then((data) => setUsers(data));
-  }, []);
-
-  const usersMap = new Map();
-
-  users.forEach((user) => {
-    usersMap.set(user.login, user.role);
-  });
-
-  const globalUser = (user) => {
-    setCurrentUser(user);
-  };
-
-  const logIn = ({ login, password }) => {
-    users.forEach((user) => {
-      if (user.login === login && user.password === password) {
-        if (usersMap.has(login)) {
-          setCurrentUserRole(usersMap.get(login));
-        }
-        globalUser(user);
-      } else if(user.login === login || user.password === password) {
-        alert("Невірний логін або пароль!");
-      }
-    });
-  };
+  const handleLogin = ({email, password}) => {
+    dispatch(login({email, password}))
+  }
 
   return (
     <>
-      <Formik initialValues={initialValues} onSubmit={logIn}>
-        {() => {
-          return (
+      <Formik initialValues={initialValues} onSubmit={handleLogin}>
             <Form className={styles.container}>
-              {currentUserRole && <Navigate to={`/${currentUserRole}`} />}
               <h2 className={styles.heading}>Увійдіть щоб продовжити</h2>
               <Field
-                name="login"
+                name="email"
                 className={styles.field}
-                type="text"
-                placeholder="Логін"
+                type="email"
+                placeholder="Email"
               />
               <Field
                 name="password"
@@ -66,8 +44,6 @@ const LogInForm = () => {
                 Вхід
               </button>
             </Form>
-          );
-        }}
       </Formik>
     </>
   );
