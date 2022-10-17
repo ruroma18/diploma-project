@@ -1,23 +1,20 @@
-import { useContext } from "react";
+import React from "react";
 import logo from "img/main.png";
 import styles from "./Header.module.scss";
-import { UserContext } from "contexts";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signOut } from "redux/features/auth/authThunk";
 
 const Header = () => {
-  const currentUser = useContext(UserContext);
-  const fullName = `${currentUser[1].firstName} ${currentUser[1].lastName}`;
-  const currentUserRole = `${currentUser[1].role}`;
-  const navigate = useNavigate();
-  console.log(currentUserRole)
+  const dispatch = useDispatch();
+  // const currentUser = useContext(UserContext);
+  // const fullName = `${currentUser[1].firstName} ${currentUser[1].lastName}`;
+  // // const currentUserRole = `${currentUser[1].role}`;
+  // const navigate = useNavigate();
 
-  const logOut = () => {
-    navigate("/");
-  };
-
-  const toCourses = () => {
-    navigate(`/${currentUserRole}`)
-  }
+  // const toCourses = () => {
+  //   navigate(`/${currentUserRole}`);
+  // };
 
   return (
     <header className={styles.container}>
@@ -27,18 +24,18 @@ const Header = () => {
       </div>
       <nav className={styles.coursesHeading}>
         <ul>
-          <li onClick={toCourses}>Мої курси</li>
+          {/* <li onClick={toCourses}>Мої курси</li> */}
         </ul>
       </nav>
       <div className={styles.userContainer}>
-        <p className={styles.userName}>{fullName}</p>
-        <img
+        {/* <p className={styles.userName}>{fullName}</p> */}
+        {/* <img
           className={styles.userImg}
           src={currentUser[1].imgSrc}
           alt={fullName}
-        />
+        /> */}
       </div>
-      <button className={styles.btnLogOut} onClick={logOut}>
+      <button className={styles.btnLogOut} onClick={() => dispatch(signOut())}>
         Вихід
       </button>
     </header>
