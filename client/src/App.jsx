@@ -1,27 +1,24 @@
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "pages/Main";
 import StudentPage from "pages/Student";
 import TeacherPage from "pages/Teacher";
 import CoursePage from "pages/Course";
-import { useState } from "react";
-import { UserContext } from "contexts";
 import Task from "pages/Task";
+import PrivateRoute from "utils/privateRoute";
+import history from "utils/history";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
-  
   return (
-    <Router>
-      <UserContext.Provider value={[setCurrentUser, currentUser]}>
-        <Routes>
-          <Route exact path="/" element={<MainPage />} />
-          <Route path="/student" element={<StudentPage />} />
-          <Route path="/teacher" element={<TeacherPage />} />
-          <Route path="/course" element={<CoursePage />} />
-          <Route path="/task" element={<Task />} />
-        </Routes>
-      </UserContext.Provider>
+    <Router history={history}>
+      <Routes>
+        <Route exact path="/" element={<MainPage />} />
+        <Route path="/student" element={<PrivateRoute />}>
+          <Route exact path="/student" element={<StudentPage />} />
+          <Route exact path="/student" element={<TeacherPage />} />
+          <Route exact path="/student" element={<CoursePage />} />
+          <Route exact path="/student" element={<Task />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }
