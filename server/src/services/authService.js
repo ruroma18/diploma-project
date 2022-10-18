@@ -16,7 +16,8 @@ module.exports.createSession = async (user) => {
 }
 
 module.exports.refreshSession = async (refreshTokenIsntance) => {
-  const user = await User.findById(refreshTokenIsntance.userId)
+
+  const user = await User.findOne({where: {id: refreshTokenIsntance.userId}});
 
   if (!user) {
     throw new createHttpError(404, 'User not found');
