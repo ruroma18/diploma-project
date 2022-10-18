@@ -6,17 +6,46 @@ import CoursePage from "pages/Course";
 import Task from "pages/Task";
 import PrivateRoute from "utils/privateRoute";
 import history from "utils/history";
+import { getToken } from 'utils/helperFunctions';
+import { fetchUserData } from 'redux/features/auth/authThunk';
+import { useDispatch } from "react-redux";
+import CONSTANTS from "./constants";
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  if(getToken(CONSTANTS.ACCESS_TOKEN)) {
+    dispatch(fetchUserData());
+  }
+
   return (
     <Router history={history}>
       <Routes>
-        <Route exact path="/" element={<MainPage />} />
-        <Route path="/student" element={<PrivateRoute />}>
-          <Route exact path="/student" element={<StudentPage />} />
-          <Route exact path="/student" element={<TeacherPage />} />
-          <Route exact path="/student" element={<CoursePage />} />
-          <Route exact path="/student" element={<Task />} />
+        <Route exact path="/login" element={<MainPage />} />
+        <Route exact path="/teacher" element={
+          <PrivateRoute>
+            <TeacherPage />
+          </PrivateRoute>
+        }>
+        </Route>
+        <Route exact path="/student" element={
+          <PrivateRoute>
+            <StudentPage />
+          </PrivateRoute>
+        }>
+        </Route>
+        <Route exact path="/course" element={
+          <PrivateRoute>
+            <CoursePage />
+          </PrivateRoute>
+        }>
+        </Route>
+        <Route exact path="/task" element={
+          <PrivateRoute>
+            <Task />
+          </PrivateRoute>
+        }>
         </Route>
       </Routes>
     </Router>
