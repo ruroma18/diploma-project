@@ -2,19 +2,19 @@ import React from "react";
 import logo from "img/main.png";
 import styles from "./Header.module.scss";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "redux/features/auth/authThunk";
 
 const Header = () => {
   const dispatch = useDispatch();
-  // const currentUser = useContext(UserContext);
-  // const fullName = `${currentUser[1].firstName} ${currentUser[1].lastName}`;
-  // // const currentUserRole = `${currentUser[1].role}`;
-  // const navigate = useNavigate();
+  const {userData} = useSelector((state) => state.auth);
+  const fullName = `${userData.firstName} ${userData.lastName}`;
+  const currentUserRole = `${userData.role}`;
+  const navigate = useNavigate();
 
-  // const toCourses = () => {
-  //   navigate(`/${currentUserRole}`);
-  // };
+  const toCourses = () => {
+    navigate(`/${currentUserRole}`);
+  };
 
   return (
     <header className={styles.container}>
@@ -24,11 +24,11 @@ const Header = () => {
       </div>
       <nav className={styles.coursesHeading}>
         <ul>
-          {/* <li onClick={toCourses}>Мої курси</li> */}
+          <li onClick={toCourses}>Мої курси</li>
         </ul>
       </nav>
       <div className={styles.userContainer}>
-        {/* <p className={styles.userName}>{fullName}</p> */}
+        <p className={styles.userName}>{fullName}</p>
         {/* <img
           className={styles.userImg}
           src={currentUser[1].imgSrc}
