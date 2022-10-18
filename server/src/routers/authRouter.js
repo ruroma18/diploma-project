@@ -1,9 +1,10 @@
 const authRouter = require('express').Router();
 const AuthController = require('../controllers/authController');
-const { checkRefreshToken } = require('../middleware/tokenMW');
+const { checkRefreshToken, checkAuth, checkAccessToken } = require('../middleware/tokenMW');
 
 authRouter.post('/register', AuthController.register);
 authRouter.post('/login', AuthController.login);
-authRouter.post('/refresh', checkRefreshToken, AuthController.refresh)
+authRouter.get('/refresh', checkRefreshToken, AuthController.refresh);
+authRouter.get('/getUser', checkAccessToken, AuthController.getUser);
 
 module.exports = authRouter;
