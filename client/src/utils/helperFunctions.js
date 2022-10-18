@@ -1,11 +1,15 @@
-export const getToken = () => {
-  return localStorage.getItem('token');
+import CONSTANTS from "../constants";
+
+export const getToken = (tokenName) => {
+  return localStorage.getItem(tokenName);
 };
 
-export const removeToken = () => {
-  localStorage.removeItem('token');
+export const removeTokens = () => {
+  localStorage.removeItem(CONSTANTS.ACCESS_TOKEN);
+  localStorage.removeItem(CONSTANTS.REFRESH_TOKEN);
 };
 
-export const setToken = (val) => {
-  localStorage.setItem('token', val);
+export const setToken = (tokenName, val) => {
+  localStorage.setItem(tokenName, val);
 };
+
