@@ -1,10 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Route, useNavigate } from 'react-router-dom';
 import Loading from 'components/Loading/Loading';
+import { useNavigate } from 'react-router-dom';
 
-
-const PrivateRoute = ({ roles, ...routerProps }) => {
+const PrivateRoute = ({ children }) => {
   const navigate = useNavigate();
   const { loading, userData } = useSelector((state) => state.auth);
 
@@ -12,11 +11,11 @@ const PrivateRoute = ({ roles, ...routerProps }) => {
     return <Loading />
   }
 
-  if(userData) {
-    return <Route {...routerProps} />
+  if (!userData) {
+    return navigate('/login');
   }
 
-  return navigate("/login");
+  return children;
 }
 
 export default PrivateRoute;
