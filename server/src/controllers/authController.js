@@ -50,3 +50,14 @@ module.exports.refresh = async (req, res, next) => {
 
   res.status(200).send({ sessionData });
 }
+
+module.exports.getUser = async (req, res, next) => {
+  const { userId } = req;
+  
+  const user = await User.findOne({where: {id: userId}});
+
+  const sessionData = await authService.createSession(user);
+
+  res.status(200).send(sessionData);
+
+}
