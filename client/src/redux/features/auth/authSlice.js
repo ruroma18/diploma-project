@@ -21,19 +21,19 @@ export const authSlice = createSlice({
       state.loading = true;
     },
     [login.fulfilled]: (state, action) => {
-      const {accessToken, user} = action.payload;
+      const {tokenPair, user} = action.payload;
       state.loading = false;
       state.userData = user;
-      state.token = accessToken;
+      state.token = tokenPair.accessToken;
     },
     [login.rejected]: (state, action) => {
       state.loading = false;
     },
     [fetchUserData.fulfilled]: (state, action) => {
-      const {accessToken, user} = action.payload;
+      const {tokenPair, user} = action.payload;
       state.loading = false;
       state.userData = user;
-      state.token = accessToken;
+      state.token = tokenPair.accessToken;
     },
     [fetchUserData.rejected]: (state, action) => {
       state.loading = false;
@@ -42,7 +42,5 @@ export const authSlice = createSlice({
     },
   }
 });
-
-export const {} = authSlice.actions;
 
 export default authSlice.reducer;
