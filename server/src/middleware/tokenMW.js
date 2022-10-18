@@ -1,12 +1,15 @@
 const jwtService = require('../services/jwtService');
+const { RefreshToken } = require('../db/models/');
 
 module.exports.checkAccessToken = async (req, res, next) => {
   try {
-    const { headers: { autorization } } = req;
+    const { headers: { authorization } } = req;
 
-    const [authType, token] = autorization.split(' ');
+    const [authType, token] = authorization.split(' ');
 
-    await jwtService.verifyAccessToken(token);
+    const decodedToken = await jwtService.verifyAccessToken(token);
+
+    req.userId = decodedToken.userId;
 
     next();
   } catch (error) {
@@ -21,7 +24,7 @@ module.exports.checkRefreshToken = async (req, res, next) => {
 
     const refreshTokenInstance = await RefreshToken.findOne({ where: { token: refreshToken } });
 
-    if(!refreshTokenInstance) {
+    if (!refreshTokenInstance) {
       return next(createHttpError(401, 'Invalid data'));
     }
 
@@ -34,4 +37,4 @@ module.exports.checkRefreshToken = async (req, res, next) => {
     next(error);
 
   }
-}
+};
