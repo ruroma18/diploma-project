@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUserData, login, signOut } from "./authThunk";
+import { fetchUserData, login, signOut, register } from "./authThunk";
 
 const initialState = {
   userData: null,
@@ -39,6 +39,17 @@ export const authSlice = createSlice({
       state.loading = false;
       state.userData = null;
       state.token = null;
+    },
+    [register.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [register.fulfilled]: (state, action) => {
+      const {data} = action.payload;
+      state.loading = false;
+      state.userData = data;
+    },
+    [register.rejected]: (state, action) => {
+      state.loading = false;
     },
   }
 });
