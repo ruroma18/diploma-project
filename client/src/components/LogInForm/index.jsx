@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Formik, Form, Field } from "formik";
 import styles from "./LogInForm.module.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,9 +13,11 @@ const LogInForm = () => {
   const navigate = useNavigate();
   const { userData } = useSelector((state) => state.auth);
 
-  if (getToken(CONSTANTS.ACCESS_TOKEN)) {
-    navigate(`/${userData.role}`);
-  }
+  useEffect(() => {
+    if (getToken(CONSTANTS.ACCESS_TOKEN)) {
+      navigate(`/${userData.role}`);
+    }
+  }, [userData]);
 
   const initialValues = {
     email: "",
