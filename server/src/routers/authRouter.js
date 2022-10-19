@@ -1,6 +1,6 @@
 const authRouter = require('express').Router();
 const AuthController = require('../controllers/authController');
-const { checkRefreshToken, checkAuth, checkAccessToken } = require('../middleware/tokenMW');
+const { checkRefreshToken, checkAccessToken } = require('../middleware/tokenMW');
 
 authRouter.post('/register', AuthController.register);
 authRouter.post('/login', AuthController.login);
