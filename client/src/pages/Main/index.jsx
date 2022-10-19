@@ -1,12 +1,12 @@
+import Welcome from 'components/Welcome';
 import React from 'react';
-import LogIn from '../../components/LogIn';
 
-const MainPage = () => {
+const WelcomePage = () => {
   return (
     <div>
-      <LogIn></LogIn>
+      <Welcome />
     </div>
   );
 }
 
-export default MainPage;
+export default WelcomePage;
