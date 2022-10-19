@@ -48,7 +48,7 @@ module.exports.refresh = async (req, res, next) => {
 
   const sessionData = authService.refreshSession(refreshTokenInstance);
 
-  res.status(200).send({ sessionData });
+  res.status(200).send(sessionData);
 }
 
 module.exports.getUser = async (req, res, next) => {
