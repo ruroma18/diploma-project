@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING,
       validate: {
-        isAlpha: true,
+        is: /(^[a-яA-я][a-яA-я\s]{2,20}[a-яA-Я]$)/,
         notEmpty: true,
         notNull: true
       }
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING,
       validate: {
-        isAlpha: true,
+        is: /(^[a-яA-я][a-яA-я\s]{2,20}[a-яA-Я]$)/,
         notEmpty: true,
         notNull: true
       }
