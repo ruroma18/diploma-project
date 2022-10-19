@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.heading {
+  display: flex;
+  color: #4d95d8;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.fieldContainer {
+  width: 90%;
+}
+
+.selectFieldContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+}
+
+.field {
+  display: flex;
+  margin: 10px 0;
+  padding: 7px;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.8em;
+  opacity: 80%;
+  background-color: #dcd6d6;
+  width: 100%;
+  position: relative;
+}
+
+.fieldName {
+  display: flex;
+  justify-content: flex-start;
+  color: #4d95d8;
+  margin-right: 10px;
+}
+
+.validationError {
+  position: absolute;
+  color: #ff0000;
+  font-size: 0.7rem;
+  margin-top: -10px;
+  margin-left: 10px;
+}
+
+.btn {
+  width: 150px;
+  margin-top: 5px;
+  padding: 5px;
+  background-color: #4d95d8;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+
+  &:hover {
+    background-color: #2be85a;
+    color: #ffffff;
+  }
+}
