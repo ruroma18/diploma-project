@@ -18,12 +18,16 @@ const RegistrationForm = () => {
   }
 
   const initialValues = {
+    firstName : "",
+    lastName: "",
     email: "",
     password: "",
+    role: ""
   };
 
-  const handleRegister = ({ email, password, firstName, lastName, role }) => {
-    dispatch(register({ email, password, firstName, lastName, role }));
+  const handleRegister = ({ firstName, lastName, email, password, role }) => {
+    dispatch(register({ firstName, lastName, email, password, role }));
+    navigate(`/login`);
   };
 
   return (
