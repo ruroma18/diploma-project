@@ -16,6 +16,28 @@
 }
 
 .addIcon {
-  font-size: 3em;
+  font-size: 5rem !important;
   color: #a0a0a0;
+
+  &:hover {
+    color: black;
+  }
+}
+
+.modalContainer {
+  display: flex;
+  justify-content: center;
+  min-width: 350px;
+}
+
+.modalBtn {
+  align-self: flex-end;
+  color: #ff0000;
+}
+
+.modalHeading {
+  align-self: center;
+  font-size: 1.2rem;
+  color: #71b0eb;
+  font-weight: bold;
 }
