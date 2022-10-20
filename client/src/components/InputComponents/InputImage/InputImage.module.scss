@@ -1,0 +1,19 @@
+.imageUploadContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.imgWrapper {
+  width: 280px;
+  height: 200px;
+}
+
+.imagePreview {
+  height: inherit;
+  width: inherit;
+  background-size: cover;
+}
