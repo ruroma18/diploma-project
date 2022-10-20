@@ -4,7 +4,7 @@ const { TEACHER, STUDENT } = require('../../constants');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate({Course, Task, RefreshToken}) {
-      User.hasMany(Course, {foreignKey: 'userId'}),
+      User.hasMany(Course, {foreignKey: 'teacherId'}),
       User.belongsToMany(Course, {
         through: 'students_to_coruses',
         foreignKey: 'userId'
