@@ -12,8 +12,11 @@ const validationSchema = {
     password: yup.string().required('Введіть пароль'),
     confirmPassword: yup.string().required('').oneOf([yup.ref('password')], 'Паролі повинні бути однакові'),
     role: yup.string().matches(/(teacher|student)/).required('Оберіть роль')
+  }),
+  CourseSchema: yup.object().shape({
+    name: yup.string().min(5, 'Назва має мати більше 5-ти символів').required('Введіть назву курсу'),
+    imgPath: yup.mixed()
   })
-  
 }
 
 export default validationSchema;
