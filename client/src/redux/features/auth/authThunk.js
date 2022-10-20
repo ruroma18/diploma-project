@@ -18,7 +18,6 @@ export const fetchUserData = createAsyncThunk('auth/fetchUserData',
 
 export const register = createAsyncThunk('auth/register',
   async (payload) => {
-    console.log(payload)
     const response = await api.post('auth/register', payload);
     return response.data;
   })
