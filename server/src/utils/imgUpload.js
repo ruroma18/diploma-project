@@ -8,4 +8,4 @@ const storage = multer.diskStorage({
 
 const imgUpload = multer({storage});
 
-module.exports = imgUpload;
+module.exports.imgUploadSingle = imgUpload.single('image');
