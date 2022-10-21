@@ -1,13 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getToken, removeTokens, setToken } from "utils/helperFunctions";
+import { removeTokens, setToken } from "utils/helperFunctions";
 import api from '../../../api/http';
 import CONSTANTS from '../../../constants';
 
 export const fetchUserData = createAsyncThunk('auth/fetchUserData',
   async (data, { rejectWithValue }) => {
     try {
-      const accessToken = getToken(CONSTANTS.ACCESS_TOKEN);
-      api.defaults.headers.authorization = `Bearer ${accessToken}`;
       const response = await api.get('auth/getUser');
       return response.data;
     } catch (error) {
