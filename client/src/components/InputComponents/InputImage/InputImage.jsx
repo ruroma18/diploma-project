@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import styles from "./InputImage.module.scss";
 import { Field } from "formik";
 
-const InputImage = (name) => {
+const InputImage = ({name, formik}) => {
   const [file, setFile] = useState();
 
   const handleChange = (e) => {
     e.preventDefault();
     setFile(URL.createObjectURL(e.target.files[0]));
+    formik.setFieldValue('imgPath', e.target.files[0]);
   };
 
   return (
@@ -16,6 +17,7 @@ const InputImage = (name) => {
         name={name}
         type="file"
         className={styles.field}
+        accept="image/*"
         onChange={handleChange}
       ></Field>
 
