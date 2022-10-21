@@ -6,7 +6,7 @@ module.exports.getCourses = async (req, res, next) => {
     const { user } = req;
 
     if (user.role === CONSTANTS.TEACHER) {
-      const courses = await user.findCourse();
+      const courses = await user.getCourses();
       res.status(200).send(courses);
     }
 
@@ -22,10 +22,7 @@ module.exports.getCourses = async (req, res, next) => {
 
 module.exports.createCourse = async (req, res, next) => {
   try {
-
     const { body, user, file: { filename } } = req;
-
-    console.log(filename)
 
     const course = await user.createCourse({ imgPath: filename, ...body });
 
