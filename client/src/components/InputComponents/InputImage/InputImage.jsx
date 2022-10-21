@@ -8,7 +8,7 @@ const InputImage = ({name, formik}) => {
   const handleChange = (e) => {
     e.preventDefault();
     setFile(URL.createObjectURL(e.target.files[0]));
-    formik.setFieldValue('imgPath', e.target.files[0]);
+    formik.setFieldValue('image', e.target.files[0]);
   };
 
   return (
