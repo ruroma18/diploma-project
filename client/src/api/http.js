@@ -9,4 +9,12 @@ const api = axios.create({
   }
 });
 
+api.interceptors.request.use((config) => {
+  config.headers = {
+    ...config.headers,
+    Authorization: `Bearer ${getToken(CONSTANTS.ACCESS_TOKEN)}`,
+  };
+  return config;
+}, (error) => Promise.reject(error));
+
 export default api;
