@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { Formik, Form, Field } from "formik";
 import styles from "./LogInForm.module.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { getToken } from "utils/helperFunctions";
 import { login } from "redux/features/auth/authThunk";
 import { useNavigate } from "react-router-dom";
@@ -11,13 +11,10 @@ import validationSchema from "../../validation/validationSchema";
 const LogInForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { userData } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (getToken(CONSTANTS.ACCESS_TOKEN)) {
-      navigate(`/${userData.role}`);
-    }
-  }, [userData]);
+  if (getToken(CONSTANTS.ACCESS_TOKEN)) {
+    navigate("/dashboard");
+  }
 
   const initialValues = {
     email: "",

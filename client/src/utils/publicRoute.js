@@ -10,7 +10,7 @@ const PublicRoute = ({ children }) => {
   const token = getToken(CONSTANTS.ACCESS_TOKEN)
 
   if (userData && token) {
-    return <Navigate to={`/${userData.role}`}/>
+    return <Navigate to='/dashboard'/>
   }
 
   if (loading) {
