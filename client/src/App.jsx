@@ -1,45 +1,52 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "pages/Main";
-import StudentPage from "pages/Student";
-import TeacherPage from "pages/Teacher";
+import DashboardPage from "pages/Dashboard";
 import CoursePage from "pages/Course";
 import Task from "pages/Task";
 import PrivateRoute from "utils/privateRoute";
-import { getToken } from "utils/helperFunctions";
-import { fetchUserData } from "redux/features/auth/authThunk";
-import { useDispatch } from "react-redux";
-import CONSTANTS from "./constants";
-import Registration from "components/Registration";
+import Registration from "pages/Registration";
 import LoginPage from "pages/Login";
+import PublicRoute from "utils/publicRoute";
+import history from './browserHistory';
 
 function App() {
-  const dispatch = useDispatch();
-
-  if (getToken(CONSTANTS.ACCESS_TOKEN)) {
-    dispatch(fetchUserData());
-  }
 
   return (
-    <Router>
+    <Router history={history}>
       <Routes>
-        <Route exact path="/" element={<MainPage />} />
-        <Route exact path="/login" element={<LoginPage />} />
-        <Route exact path="/registration" element={<Registration />} />
         <Route
           exact
-          path="/teacher"
+          path="/"
           element={
-            <PrivateRoute>
-              <TeacherPage />
-            </PrivateRoute>
+            <PublicRoute>
+              <MainPage />
+            </PublicRoute>
           }
         ></Route>
         <Route
           exact
-          path="/student"
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        ></Route>
+        <Route
+          exact
+          path="/registration"
+          element={
+            <PublicRoute>
+              <Registration />
+            </PublicRoute>
+          }
+        ></Route>
+        <Route
+          exact
+          path="/dashboard"
           element={
             <PrivateRoute>
-              <StudentPage />
+              <DashboardPage />
             </PrivateRoute>
           }
         ></Route>
