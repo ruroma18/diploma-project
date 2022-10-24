@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchUserData, login, signOut, register } from "./authThunk";
 
 const initialState = {
-  userData: null,
+  userData: {},
   token: null,
   loading: false,
 };
@@ -14,7 +14,7 @@ export const authSlice = createSlice({
   extraReducers: {
     [signOut.fulfilled]: (state, action) => {
       state.loading = false;
-      state.userData = null;
+      state.userData = {};
       state.token = null;
     },
     [login.pending]: (state, action) => {
@@ -37,7 +37,7 @@ export const authSlice = createSlice({
     },
     [fetchUserData.rejected]: (state, action) => {
       state.loading = false;
-      state.userData = null;
+      state.userData = {};
       state.token = null;
     },
     [register.pending]: (state, action) => {
