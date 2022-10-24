@@ -9,9 +9,8 @@ import LoginPage from "pages/Login";
 import PublicRoute from "utils/publicRoute";
 
 function App() {
-
   return (
-    <Router >
+    <Router>
       <Routes>
         <Route
           exact
@@ -51,7 +50,7 @@ function App() {
         ></Route>
         <Route
           exact
-          path="/course"
+          path="/course/:courseId"
           element={
             <PrivateRoute>
               <CoursePage />
