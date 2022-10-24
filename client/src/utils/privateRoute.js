@@ -5,16 +5,16 @@ import { Navigate } from 'react-router-dom';
 import { getToken } from './helperFunctions';
 import CONSTANTS from '../constants'
 
-const PrivateRoute = ({ children }) => {
-  const { loading, userData } = useSelector((state) => state.auth);
+const PrivateRoute = ({children}) => {
+  const { loading } = useSelector((state) => state.auth);
   const token = getToken(CONSTANTS.ACCESS_TOKEN)
-
-  if (!userData && !token) {
-    return <Navigate to='/login'/>
-  }
 
   if (loading) {
     return <Loading />
+  }
+
+  if (!token) {
+    return <Navigate to='/login' replace/>
   }
 
   return children;
