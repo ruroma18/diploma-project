@@ -7,12 +7,11 @@ import PrivateRoute from "utils/privateRoute";
 import Registration from "pages/Registration";
 import LoginPage from "pages/Login";
 import PublicRoute from "utils/publicRoute";
-import history from './browserHistory';
 
 function App() {
 
   return (
-    <Router history={history}>
+    <Router >
       <Routes>
         <Route
           exact
