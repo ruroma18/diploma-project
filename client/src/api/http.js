@@ -4,14 +4,10 @@ import CONSTANTS from '../constants';
 
 const api = axios.create({
   baseURL: CONSTANTS.BASE_URL,
-  headers: {
-    'Authorization': `Bearer ${getToken(CONSTANTS.ACCESS_TOKEN)}`
-  }
 });
 
 api.interceptors.request.use((config) => {
   config.headers = {
-    ...config.headers,
     Authorization: `Bearer ${getToken(CONSTANTS.ACCESS_TOKEN)}`,
   };
   return config;
