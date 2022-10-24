@@ -1,5 +1,7 @@
 .container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 10px;
 }
 
@@ -17,14 +19,14 @@
 
   &:hover {
     opacity: 0.5;
-  }}
-
-  .cardImg {
-    height: inherit;
-    width: inherit;
-    background-image: url('https://nubip.edu.ua/sites/default/files/u34/common-cybersecurity-issues.jpg');
-    background-size: cover;
   }
+}
+
+.cardImg {
+  height: 180px;
+  width: inherit;
+  background-size: cover;
+}
 
 .heading {
   color: black;
