@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createCourse, getCourses } from "./courseThunk";
 
 const initialState = {
-  courseData: null,
+  courseData: [],
   loading: null,
   error: null,
 }
@@ -14,18 +14,16 @@ export const courseSlice = createSlice({
   extraReducers: {
     [createCourse.pending]: (state, action) => {
       state.loading = true;
-      state.courseData = null;
     },
     [createCourse.fulfilled]: (state, action) => {
       state.loading = false;
     },
     [createCourse.rejected]: (state, action) => {
       state.loading = false;
-      state.courseData = null;
     },
     [getCourses.pending]: (state, action) => {
       state.loading = true;
-      state.courseData = null;
+      state.courseData = [];
     },
     [getCourses.fulfilled]: (state, action) => {
       state.loading = false;
@@ -33,7 +31,7 @@ export const courseSlice = createSlice({
     },
     [getCourses.rejected]: (state, action) => {
       state.loading = false;
-      state.courseData = null;
+      state.courseData = [];
     },
   }
 });

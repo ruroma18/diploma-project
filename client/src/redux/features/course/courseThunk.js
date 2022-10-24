@@ -9,6 +9,5 @@ export const getCourses = createAsyncThunk('course/getCourses',
 
 export const createCourse = createAsyncThunk('course/createCourse',
   async (payload ) => {
-      const response = await api.post(`course/createCourse`, payload);
-      return response;
+    await api.post(`course/createCourse`, payload);
   });  
