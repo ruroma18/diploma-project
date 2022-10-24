@@ -10,4 +10,5 @@ export const getCourses = createAsyncThunk('course/getCourses',
 export const createCourse = createAsyncThunk('course/createCourse',
   async (payload ) => {
     await api.post(`course/createCourse`, payload);
+    window.location.reload()
   });  
