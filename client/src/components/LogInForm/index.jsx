@@ -2,19 +2,11 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import styles from "./LogInForm.module.scss";
 import { useDispatch} from "react-redux";
-import { getToken } from "utils/helperFunctions";
 import { login } from "redux/features/auth/authThunk";
-import { useNavigate } from "react-router-dom";
-import CONSTANTS from "../../constants";
 import validationSchema from "../../validation/validationSchema";
 
 const LogInForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  if (getToken(CONSTANTS.ACCESS_TOKEN)) {
-    navigate("/dashboard");
-  }
 
   const initialValues = {
     email: "",
