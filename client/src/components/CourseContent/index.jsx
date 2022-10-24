@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import ArticleIcon from "@mui/icons-material/Article";
 import TaskIcon from "@mui/icons-material/Task";
-import styles from "./CourseFilling.module.scss";
+import styles from "./CourseContent.module.scss";
 import cx from "classnames";
 import { useNavigate } from "react-router-dom";
 
-const CourseFilling = () => {
+const CourseContent = () => {
   const [course, setCourse] = useState([]);
   const navigate = useNavigate();
 
@@ -58,4 +58,4 @@ const CourseFilling = () => {
   );
 };
 
-export default CourseFilling;
+export default CourseContent;

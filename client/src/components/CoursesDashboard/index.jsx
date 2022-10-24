@@ -3,10 +3,9 @@ import CourseCard from "components/CourseCard";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourses } from "redux/features/course/courseThunk";
+import styles from "./CoursesDashboard.module.scss";
 
-import styles from "./Courses.module.scss";
-
-const Courses = () => {
+const CoursesDashboard = () => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.auth);
 
@@ -25,4 +24,4 @@ const Courses = () => {
   );
 };
 
-export default Courses;
+export default CoursesDashboard;

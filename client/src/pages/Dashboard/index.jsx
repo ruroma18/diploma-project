@@ -1,12 +1,12 @@
 import Header from 'components/Header';
-import Courses from 'components/Courses';
+import CoursesDashboard from 'components/CoursesDashboard';
 import React from 'react';
 
 const DashboardPage = () => {
   return (
     <>
     <Header />
-    <Courses />
+    <CoursesDashboard />
     </>
   );
 }
