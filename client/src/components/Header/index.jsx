@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "img/main.png";
 import styles from "./Header.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signOut } from "redux/features/auth/authThunk";
+import { fetchUserData, signOut } from "redux/features/auth/authThunk";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const {userData} = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    dispatch(fetchUserData());
+  }, [dispatch]);
+
+  
+  const { userData } = useSelector((state) => state.auth);
   const fullName = `${userData.firstName} ${userData.lastName}`;
   const currentUserRole = `${userData.role}`;
   const navigate = useNavigate();
