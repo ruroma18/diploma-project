@@ -18,7 +18,7 @@ const AddNewCourse = () => {
       <Dialog open={openModal} className={styles.modalContainer} >
         <CloseIcon className={styles.modalBtn} onClick={() => toggleOpenModal()}/>
         <h2 className={styles.modalHeading}>Створити курс</h2>
-          <CourseForm />
+          <CourseForm setOpenModal={setOpenModal} />
       </Dialog>
     </div>
   );

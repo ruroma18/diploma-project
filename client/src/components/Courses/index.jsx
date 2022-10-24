@@ -1,19 +1,25 @@
 import AddNewCourse from "components/AddNewCourse ";
 import CourseCard from "components/CourseCard";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCourses } from "redux/features/course/courseThunk";
+
 import styles from "./Courses.module.scss";
 
 const Courses = () => {
+  const dispatch = useDispatch();
+  const { userData } = useSelector((state) => state.auth);
 
-  const {userData} = useSelector((state) => state.auth);
+  useEffect(() => {
+    dispatch(getCourses());
+  }, [dispatch]);
 
   return (
     <article className={styles.container}>
       <h2 className={styles.heading}>Курси</h2>
       <div className={styles.courseContainer}>
-        {/* <CourseCard /> */}
-        {userData.role === 'teacher' ? <AddNewCourse /> : null}
+        <CourseCard />
+        {userData.role === "teacher" ? <AddNewCourse /> : null}
       </div>
     </article>
   );

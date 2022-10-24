@@ -6,7 +6,7 @@ import styles from "./CourseForm.module.scss";
 import { useDispatch } from "react-redux";
 import { createCourse } from "redux/features/course/courseThunk";
 
-const CourseForm = () => {
+const CourseForm = ({setOpenModal}) => {
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -20,7 +20,10 @@ const CourseForm = () => {
     const data = new FormData();
     data.append('name', name);
     data.append('image', formik.values.image);
-    dispatch(createCourse(data))};
+    dispatch(createCourse(data))
+    setOpenModal(false);
+  }
+    
 
   return (
     <Formik

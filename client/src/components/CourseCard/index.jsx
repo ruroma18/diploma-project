@@ -1,21 +1,25 @@
 import React from "react";
+import CONSTANTS from "../../constants";
 import styles from "./CourseCard.module.scss";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const CourseCard = () => {
-  const navigate = useNavigate();
-
-  const toCourse = () => {
-    navigate("/course");
-  };
+  const {courseData} = useSelector(state => state.course);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.cardWrapper} onClick={toCourse}>
-        <div className={styles.cardImg}></div>
-        <h2 className={styles.heading}>Кібербезпека у середній школі</h2>
-      </div>
-    </div>
+    <>
+      {courseData.map((course) => (
+        <div className={styles.cardWrapper} key={course.id}>
+            <img
+              src={`${CONSTANTS.PUBLIC_URL}${course.imgPath}`}
+              alt={course.name}
+              className={styles.cardImg}
+            />
+          <div className={styles.cardImg}></div>
+          <h2 className={styles.heading}>{course.name}</h2>
+        </div>
+      ))}
+    </>
   );
 };
 
