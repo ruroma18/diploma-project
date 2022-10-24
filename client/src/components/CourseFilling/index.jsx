@@ -1,5 +1,4 @@
-import { getCourse } from "api";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ArticleIcon from "@mui/icons-material/Article";
 import TaskIcon from "@mui/icons-material/Task";
 import styles from "./CourseFilling.module.scss";
@@ -10,9 +9,6 @@ const CourseFilling = () => {
   const [course, setCourse] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getCourse().then((data) => setCourse(data));
-  }, []);
 
   const toggleOpenContent = (id) => {
     const newCourse = course.map((courseItem) => ({
