@@ -1,19 +1,12 @@
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 10px;
-}
-
 .cardWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 10px;
+  margin: 30px;
   width: 280px;
   height: 200px;
-  border: 2px solid #d6d3d3;
+  border-bottom: 2px solid #d6d3d3;
 
   transition: opacity 0.4s ease;
 
@@ -23,7 +16,7 @@
 }
 
 .cardImg {
-  height: 180px;
+  height: inherit;
   width: inherit;
   background-size: cover;
 }
@@ -31,5 +24,5 @@
 .heading {
   color: black;
   font-size: 1em;
-  padding: 10px 0 10px 0;
+  padding: 10px 0 15px 0;
 }
