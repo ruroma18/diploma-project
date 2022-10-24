@@ -1,21 +1,16 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import styles from "./RegistrationForm.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { getToken } from "utils/helperFunctions";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import CONSTANTS from "../../constants";
+
 import validationSchema from "../../validation/validationSchema";
 import { register } from "redux/features/auth/authThunk";
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { userData } = useSelector((state) => state.auth);
 
-  if (getToken(CONSTANTS.ACCESS_TOKEN)) {
-    navigate(`/${userData.role}`);
-  }
 
   const initialValues = {
     firstName : "",
