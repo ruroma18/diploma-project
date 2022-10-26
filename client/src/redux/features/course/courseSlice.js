@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createCourse, getCourses } from "./courseThunk";
+import { createCourse, getCourseById, getCourses } from "./courseThunk";
 
 const initialState = {
+  selectedCourse: {},
   courseData: [],
   loading: null,
   error: null,
@@ -32,6 +33,18 @@ export const courseSlice = createSlice({
     [getCourses.rejected]: (state, action) => {
       state.loading = false;
       state.courseData = [];
+    },
+    [getCourseById.pending]: (state, action) => {
+      state.loading = true;
+      state.selectedCourse = {};
+    },
+    [getCourseById.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.selectedCourse =  action.payload;
+    },
+    [getCourseById.rejected]: (state, action) => {
+      state.loading = false;
+      state.selectedCourse = {};
     },
   }
 });
