@@ -3,11 +3,11 @@ const { Course } = require('../db/models');
 
 module.exports.courseMW = async (req, res, next) => {
   try {
-    const { params: { id } } = req;
+    const { id } = req.query
 
     const course = await Course.findByPk(id);
 
-    if(!course){
+    if (!course) {
       next(createHttpError(404, 'Course not found!'));
     }
 
