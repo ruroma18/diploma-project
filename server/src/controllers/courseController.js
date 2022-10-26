@@ -32,3 +32,15 @@ module.exports.createCourse = async (req, res, next) => {
     next(error);
   }
 }
+
+module.exports.getCourseById = async (req, res, next) => {
+  try {
+
+    const { course } = req;
+
+    res.status(200).send(course);
+
+  } catch (error) {
+    next(error)
+  }
+}
