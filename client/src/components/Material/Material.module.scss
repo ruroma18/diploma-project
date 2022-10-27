@@ -1,0 +1,16 @@
+.materialWrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.materialLink {
+  margin-left: 5px;
+  text-decoration: none;
+  color: #0f5393 !important;
+  font-weight: 600;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
