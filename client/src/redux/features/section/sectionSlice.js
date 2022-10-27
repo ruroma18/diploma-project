@@ -11,7 +11,7 @@ export const sectionSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [createSection.pednign]: (state, action) => {
+    [createSection.pending]: (state, action) => {
       state.loading = true;
     },
     [createSection.fulfilled]: (state, action) => {
@@ -20,7 +20,7 @@ export const sectionSlice = createSlice({
     [createSection.rejected]: (state, action) => {
       state.loading = false;
     },
-    [getSections.pednign]: (state, action) => {
+    [getSections.pending]: (state, action) => {
       state.loading = true;
     },
     [getSections.fulfilled]: (state, action) => {
