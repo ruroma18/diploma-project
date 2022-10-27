@@ -16,7 +16,10 @@ const validationSchema = {
   CourseSchema: yup.object().shape({
     name: yup.string().min(5, 'Назва має мати більше 5-ти символів').required('Введіть назву курсу'),
     imgPath: yup.mixed()
-  })
+  }),
+  SectionSchema: yup.object().shape({
+    name: yup.string().min(5, 'Назва має мати більше 5-ти символів').required('Введіть назву розділу'),
+  }),
 }
 
 export default validationSchema;
