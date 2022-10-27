@@ -19,10 +19,10 @@ const Section = ({ courseId }) => {
 
   return (
     <ul>
-      {sectionData.map((section) => (
+      {sectionData.map((section, id) => (
         <li key={`${section.id}`}>
           <h3 className={styles.itemHeading}>
-            Розділ {section.id}. {section.name}
+            Розділ {id+1}. {section.name}
           </h3>
           {userData.role === 'teacher' ? <AddNewMaterial sectionId={section.id} /> : null}
           <Material id={section.id}/>
