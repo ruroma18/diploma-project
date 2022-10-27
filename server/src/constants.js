@@ -15,6 +15,7 @@ module.exports = {
   seedersPath: path.resolve(__dirname, 'db', 'seeders'),
   migrationsPath: path.resolve(__dirname, 'db', 'migrations'),
   imgPath: path.resolve(__dirname, '..', 'public', 'images'),
+  filePath: path.resolve(__dirname, '..', 'public', 'files'),
   JWT_ACCESS_SECRET,
   JWT_ACCESS_TIME,
   JWT_REFRESH_SECRET,

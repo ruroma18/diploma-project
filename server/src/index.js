@@ -13,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/public', express.static('public'));
 app.use('/images', express.static(CONSTANTS.imgPath));
+app.use('/files', express.static(CONSTANTS.filePath));
 app.use('/api', router);
 app.use(tokenErrorHandler);
 app.use(basicErrorHandler);
