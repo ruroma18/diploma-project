@@ -1,8 +1,9 @@
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { createMaterial } from 'redux/features/material/materialThunk';
 import validationSchema from 'validation/validationSchema';
-import styles from './FileForm.module.scss';
+import styles from './MaterialForm.module.scss';
 
 const MaterialForm = ({setOpenModal, sectionId}) => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const MaterialForm = ({setOpenModal, sectionId}) => {
     const data = new FormData();
     data.append('name', name);
     data.append('file', file);
-    dispatch(data)
+    dispatch(createMaterial({sectionId, ...data}))
     setOpenModal(false);
   }
 

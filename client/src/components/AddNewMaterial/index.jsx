@@ -3,8 +3,8 @@ import AddIcon from "@mui/icons-material/Add";
 import Button from "@mui/material/Button";
 import CloseIcon from "@mui/icons-material/Close";
 import { Dialog } from "@mui/material";
-import styles from "./AddNewFile.module.scss";
-import FileForm from "components/ Form";
+import styles from "./AddNewMaterial.module.scss";
+import MaterialForm from "components/MaterialForm";
 
 const AddNewMaterial = ({ sectionId }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -27,7 +27,7 @@ const AddNewMaterial = ({ sectionId }) => {
           onClick={() => toggleOpenModal()}
         />
         <h2 className={styles.modalHeading}>Створити розділ</h2>
-        <FileForm setOpenModal={setOpenModal} sectionId={sectionId} />
+        <MaterialForm setOpenModal={setOpenModal} sectionId={sectionId} />
       </Dialog>
     </div>
   );

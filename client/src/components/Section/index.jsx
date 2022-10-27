@@ -4,7 +4,7 @@ import TaskIcon from "@mui/icons-material/Task";
 import { useDispatch, useSelector } from "react-redux";
 import { getSections } from "redux/features/section/sectionThunk";
 import styles from "./Section.module.scss";
-import AddNewFile from "components/AddNewFile";
+import AddNewMaterial from "components/AddNewMaterial";
 
 const Section = ({ courseId }) => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const Section = ({ courseId }) => {
           <h3 className={styles.itemHeading}>
             Розділ {section.id}. {section.name}
           </h3>
-          {userData.role === 'teacher' ? <AddNewFile sectionId={section.id} /> : null}
+          {userData.role === 'teacher' ? <AddNewMaterial sectionId={section.id} /> : null}
           <div className={styles.materialWrapper}>
             <ArticleIcon />
             <a className={styles.materialLink} href="#">
