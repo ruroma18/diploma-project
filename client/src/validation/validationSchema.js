@@ -20,6 +20,10 @@ const validationSchema = {
   SectionSchema: yup.object().shape({
     name: yup.string().min(5, 'Назва має мати більше 5-ти символів').required('Введіть назву розділу'),
   }),
+  FileSchema: yup.object().shape({
+    name:  yup.string().min(5, 'Назва має мати більше 5-ти символів').required('Введіть назву файлу'),
+    file: yup.mixed()
+  })
 }
 
 export default validationSchema;
