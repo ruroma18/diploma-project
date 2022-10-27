@@ -1,0 +1,29 @@
+.itemHeading {
+  padding: 5px;
+  margin: 5px;
+  border: 2px solid #9dc2e5;
+  border-radius: 20px;
+  transition: all 0.4 ease;
+
+  &:hover {
+    background-color: #9dc2e5;
+    color: #ffffff;
+  }
+}
+
+.materialWrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.materialLink {
+  margin-left: 5px;
+  text-decoration: none;
+  color: #0f5393;
+  font-weight: 600;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
