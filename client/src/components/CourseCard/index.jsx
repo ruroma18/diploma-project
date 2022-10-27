@@ -18,7 +18,7 @@ const CourseCard = () => {
       {courseData.map((course) => (
         <div className={styles.cardWrapper} key={course.id} onClick={() => getCourse(course.id)}>
             <img
-              src={`${CONSTANTS.PUBLIC_URL}${course.imgPath}`}
+              src={`${CONSTANTS.PUBLIC_IMAGE_URL}${course.imgPath}`}
               alt={course.name}
               className={styles.cardImg}
             />
