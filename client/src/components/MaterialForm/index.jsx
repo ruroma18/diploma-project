@@ -60,7 +60,7 @@ const MaterialForm = ({setOpenModal, sectionId}) => {
             <div className={styles.validationError}>{errors.file}</div>
           ) : null}
         </div>
-        <button type='submit' className={styles.createBtn}>Створити курс</button>
+        <button type='submit' className={styles.createBtn}>Додати файл</button>
       </Form>
     )}
   </Formik>
