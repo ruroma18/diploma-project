@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
-import ArticleIcon from "@mui/icons-material/Article";
-import TaskIcon from "@mui/icons-material/Task";
 import { useDispatch, useSelector } from "react-redux";
 import { getSections } from "redux/features/section/sectionThunk";
 import styles from "./Section.module.scss";
 import AddNewMaterial from "components/AddNewMaterial";
+import Material from "components/Material";
+import { getMaterials } from "redux/features/material/materialThunk";
 
 const Section = ({ courseId }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getSections(courseId));
+    dispatch(getMaterials(courseId))
   }, [dispatch, courseId]);
 
   const { sectionData } = useSelector((state) => state.section);
@@ -24,16 +25,11 @@ const Section = ({ courseId }) => {
             Розділ {section.id}. {section.name}
           </h3>
           {userData.role === 'teacher' ? <AddNewMaterial sectionId={section.id} /> : null}
-          <div className={styles.materialWrapper}>
-            <ArticleIcon />
-            <a className={styles.materialLink} href="#">
-              Лекція
-            </a>
-          </div>
-          <div className={styles.materialWrapper}>
+          <Material id={section.id}/>
+          {/* <div className={styles.materialWrapper}>
             <TaskIcon />
             <p className={styles.materialLink}>Завдання до розділу</p>
-          </div>
+          </div> */}
         </li>
       ))}
     </ul>
