@@ -12,10 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    type: {
-      type: DataTypes.ENUM(VIDEO, FILE),
-      allowNull: false
-    },
     filePath: {
       allowNull: true,
       type: DataTypes.STRING,

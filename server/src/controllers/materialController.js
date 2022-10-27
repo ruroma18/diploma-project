@@ -12,18 +12,11 @@ module.exports.getMaterials = async (req, res, next) => {
 
 module.exports.createMaterials = async (req, res, next) => {
   try {
-
     const { section, body, file: { filename } } = req;
 
-    if (body.type === 'video') {
-      const material = await section.createMaterial(body);
-      res.status(200).send(material)
-    }
+    const material = await section.createMaterial({ filePath: filename, ...body });
 
-    if (body.type === 'file') {
-      const material = await section.createMaterial({ filePath: filename, ...body });
-      res.status(200).send(material)
-    }
+    res.status(200).send(material)
 
   } catch (error) {
     next(error);

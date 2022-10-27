@@ -22,6 +22,4 @@ module.exports = {
   JWT_REFRESH_TIME,
   TEACHER: 'teacher',
   STUDENT: 'student',
-  VIDEO: 'video',
-  FILE: 'file'
 }
