@@ -1,4 +1,4 @@
-import { Field, Form, Formik } from 'formik';
+import { Field, Form, Formik, useFormik } from 'formik';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { createMaterial } from 'redux/features/material/materialThunk';
@@ -6,25 +6,31 @@ import validationSchema from 'validation/validationSchema';
 import styles from './MaterialForm.module.scss';
 
 const MaterialForm = ({setOpenModal, sectionId}) => {
-  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      file: ""
+    }
+  })
+  const dispatch = useDispatch(); 
 
-  const initialValues = {
-    name: "",
-    file: ""
-  };
+  const handleFile = (e) => {
+    e.preventDefault()
+    formik.setFieldValue('file', e.target.files[0] ) 
+  }
 
-  const handleFile = ({name, file}) => {
+  const handleMaterial = ({name}) => {
     const data = new FormData();
     data.append('name', name);
-    data.append('file', file);
-    dispatch(createMaterial({sectionId, ...data}))
+    data.append('file', formik.values.file);
+    dispatch(createMaterial({sectionId, data}))
     setOpenModal(false);
   }
 
   return (
     <Formik
-    initialValues={initialValues}
-    onSubmit={handleFile}
+    initialValues={formik.initialValues}
+    onSubmit={handleMaterial}
     encType="multipart/form-data"
     validationSchema={validationSchema.FileSchema}
   >
@@ -44,12 +50,15 @@ const MaterialForm = ({setOpenModal, sectionId}) => {
         </div>
         <div className={styles.fieldContainer}>
           <p className={styles.fieldName}>Оберіть файл</p>
-          <Field
+          <input
             name='file'
             type='file'
             className={styles.field}
-          ></Field>
-          <div className={styles.validationError}>{errors.name}</div>
+            onChange={handleFile}
+          ></input>
+          {errors.file && touched.file ? (
+            <div className={styles.validationError}>{errors.file}</div>
+          ) : null}
         </div>
         <button type='submit' className={styles.createBtn}>Створити курс</button>
       </Form>
