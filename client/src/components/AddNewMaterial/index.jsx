@@ -26,7 +26,7 @@ const AddNewMaterial = ({ sectionId }) => {
           className={styles.modalBtn}
           onClick={() => toggleOpenModal()}
         />
-        <h2 className={styles.modalHeading}>Створити розділ</h2>
+        <h2 className={styles.modalHeading}>Додати файл</h2>
         <MaterialForm setOpenModal={setOpenModal} sectionId={sectionId} />
       </Dialog>
     </div>
