@@ -9,6 +9,6 @@ export const getMaterials = createAsyncThunk('/material/getMaterials',
 
 export const createMaterial = createAsyncThunk('/material/createMaterial',
   async (payload) => {
-    await api.post('material/createMaterial', payload, {params: {id: payload.sectionId}})
+    await api.post('material/createMaterial', payload.data, {params: {id: payload.sectionId}})
     window.location.reload();
   })  
