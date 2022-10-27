@@ -3,9 +3,9 @@ import ArticleIcon from "@mui/icons-material/Article";
 import TaskIcon from "@mui/icons-material/Task";
 import { useDispatch, useSelector } from "react-redux";
 import { getSections } from "redux/features/section/sectionThunk";
-import styles from "./courseSection.module.scss";
+import styles from "./Section.module.scss";
 
-const CourseSection = ({ courseId }) => {
+const Section = ({ courseId }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,4 +37,4 @@ const CourseSection = ({ courseId }) => {
   );
 };
 
-export default CourseSection;
+export default Section;

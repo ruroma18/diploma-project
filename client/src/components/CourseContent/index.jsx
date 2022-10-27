@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AddNewSection from "components/AddNewSection";
 import { useParams } from "react-router-dom";
 import { getCourseById } from "redux/features/course/courseThunk";
-import CourseSection from "components/CourseSection";
+import CourseSection from "components/Section";
 import styles from "./CourseContent.module.scss";
 
 const CourseContent = () => {
