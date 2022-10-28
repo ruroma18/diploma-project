@@ -12,7 +12,7 @@ const AddNewSection = ({ courseId }) => {
   const toggleOpenModal = () => setOpenModal(openModal === true ? false : true);
 
   return (
-    <div className="styles.container">
+    <div className={styles.container}>
       <Button
         variant="outlined"
         startIcon={<AddIcon />}
