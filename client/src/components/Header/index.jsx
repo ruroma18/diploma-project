@@ -19,8 +19,6 @@ const Header = () => {
   const fullName = `${userData.firstName} ${userData.lastName}`;
   const navigate = useNavigate();
 
-  console.log(userData)
-
   const setImage = () => userData.photoPath ? `${CONSTANTS.PUBLIC_IMAGE_URL}${userData.photoPath}` : defaultUserImage;
 
   const toCourses = () => {

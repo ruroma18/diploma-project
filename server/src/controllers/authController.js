@@ -6,11 +6,7 @@ module.exports.register = async (req, res, next) => {
   try {
     const { body, file: {filename} } = req;
 
-    console.log(filename)
-
     const user = await User.create({photoPath: filename, ...body});
-
-    console.log(user)
 
     const sessionData = await authService.createSession(user);
 
