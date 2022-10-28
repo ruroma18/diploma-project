@@ -4,6 +4,8 @@ import styles from "./Header.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData, signOut } from "redux/features/auth/authThunk";
+import CONSTANTS from "../../constants";
+import defaultUserImage from '../../img/user.png';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -15,11 +17,14 @@ const Header = () => {
   
   const { userData } = useSelector((state) => state.auth);
   const fullName = `${userData.firstName} ${userData.lastName}`;
-  const currentUserRole = `${userData.role}`;
   const navigate = useNavigate();
 
+  console.log(userData)
+
+  const setImage = () => userData.photoPath ? `${CONSTANTS.PUBLIC_IMAGE_URL}${userData.photoPath}` : defaultUserImage;
+
   const toCourses = () => {
-    navigate(`/${currentUserRole}`);
+    navigate(`/dashboard`);
   };
 
   return (
@@ -35,11 +40,11 @@ const Header = () => {
       </nav>
       <div className={styles.userContainer}>
         <p className={styles.userName}>{fullName}</p>
-        {/* <img
+        <img
           className={styles.userImg}
-          src={currentUser[1].imgSrc}
+          src={setImage()}
           alt={fullName}
-        /> */}
+        />
       </div>
       <button className={styles.btnLogOut} onClick={() => dispatch(signOut())}>
         Вихід
