@@ -4,9 +4,13 @@ const authService = require('../services/authService');
 
 module.exports.register = async (req, res, next) => {
   try {
-    const { body } = req;
+    const { body, file: {filename} } = req;
 
-    const user = await User.create(body);
+    console.log(filename)
+
+    const user = await User.create({photoPath: filename, ...body});
+
+    console.log(user)
 
     const sessionData = await authService.createSession(user);
 

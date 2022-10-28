@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./InputImage.module.scss";
-import { Field } from "formik";
 
 const InputImage = ({name, formik}) => {
   const [file, setFile] = useState();
@@ -13,13 +12,13 @@ const InputImage = ({name, formik}) => {
 
   return (
     <div className={styles.imageUploadContainer}>
-      <Field
+      <input
         name={name}
         type="file"
         className={styles.field}
         accept="image/*"
         onChange={handleChange}
-      ></Field>
+      ></input>
 
       {file ? (
         <div className={styles.imgWrapper}>

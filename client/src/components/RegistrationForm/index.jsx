@@ -1,34 +1,42 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, useFormik } from "formik";
 import styles from "./RegistrationForm.module.scss";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import validationSchema from "../../validation/validationSchema";
 import { register } from "redux/features/auth/authThunk";
+import InputImage from "components/InputComponents/InputImage/InputImage";
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-
-  const initialValues = {
-    firstName : "",
-    lastName: "",
-    email: "",
-    password: "",
-    role: ""
-  };
+  const formik = useFormik({
+    initialValues: {
+      firstName : "",
+      lastName: "",
+      email: "",
+      password: "",
+      role: ""
+    }
+  });
 
   const handleRegister = ({ firstName, lastName, email, password, role }) => {
-    dispatch(register({ firstName, lastName, email, password, role }));
+    const data = new FormData();
+    data.append('firstName', firstName);
+    data.append('lastName', lastName)
+    data.append('email', email)
+    data.append('password', password)
+    data.append('role', role)
+    data.append('image', formik.values.image)
+    dispatch(register(data));
     navigate(`/login`);
   };
 
   return (
     <>
       <Formik
-        initialValues={initialValues}
+        initialValues={formik.initialValues}
         validationSchema={validationSchema.RegistrationSchema}
         onSubmit = {handleRegister}
       >
@@ -40,7 +48,7 @@ const RegistrationForm = () => {
               <Field
                 name="firstName"
                 className={styles.field}
-                type="firstName"
+                type="text"
                 placeholder="Ім'я"
               />
               {errors.firstName && touched.firstName ? (
@@ -52,7 +60,7 @@ const RegistrationForm = () => {
               <Field
                 name="lastName"
                 className={styles.field}
-                type="lastName"
+                type="text"
                 placeholder="Прізвище"
               />
               {errors.lastName && touched.lastName ? (
@@ -106,7 +114,7 @@ const RegistrationForm = () => {
                 name="role"
                 as="select"
                 className={styles.field}
-                type="role"
+                type="select"
               >
                 <option value="teacher">Вчитель</option>
                 <option value="student">Учень</option>
@@ -115,6 +123,13 @@ const RegistrationForm = () => {
                 <div className={styles.validationError}>{errors.role}</div>
               ) : null}
             </div>
+            <div className={styles.fieldContainer}>
+            <p className={styles.fieldName}>Оберіть зображення курсу</p>
+            <InputImage name={'image'} formik={formik}/>
+            {errors.imgPath && touched.imgPath ? (
+              <div className={styles.imageValidationError}>{errors.imgPath}</div>
+            ) : null}
+          </div>
             <button className={styles.btn} type="submit">
               Зареєструватись
             </button>
