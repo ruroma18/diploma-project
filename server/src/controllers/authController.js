@@ -1,10 +1,15 @@
 const createHttpError = require('http-errors');
 const { User, RefreshToken } = require('../db/models');
 const authService = require('../services/authService');
+const bcrypt = require('bcrypt');
 
 module.exports.register = async (req, res, next) => {
   try {
     const { body, file: {filename} } = req;
+
+    const salt = await bcrypt.genSalt(10);
+
+    body.password = await bcrypt.hash(body.password, salt);
 
     const user = await User.create({photoPath: filename, ...body});
 
@@ -24,13 +29,14 @@ module.exports.login = async (req, res, next) => {
 
     const user = await User.findOne({ where: { email } });
 
+    const validPassword = await bcrypt.compare(password, user.password);
 
     if (!user) {
       return next(createHttpError(401, 'Invalid data'));
     }
 
-    if (user.password !== password) {
-      return next(createHttpError(401, 'Invalid data'));
+    if (!validPassword) {
+      return next(createHttpError(401, 'Invalid password'));
     }
 
     const sessionData = await authService.createSession(user);
