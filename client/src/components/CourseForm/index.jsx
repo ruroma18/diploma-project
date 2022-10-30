@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, useFormik } from "formik";
 import validationSchema from "../../validation/validationSchema";
-import InputImage from "../InputComponents/InputImage/InputImage";
+import InputImage from "../InputComponents/InputImage";
 import styles from "./CourseForm.module.scss";
 import { useDispatch } from "react-redux";
 import { createCourse } from "redux/features/course/courseThunk";

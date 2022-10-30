@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import validationSchema from "../../validation/validationSchema";
 import { register } from "redux/features/auth/authThunk";
-import InputImage from "components/InputComponents/InputImage/InputImage";
+import InputImage from "components/InputComponents/InputImage";
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
