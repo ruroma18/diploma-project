@@ -125,7 +125,7 @@ const RegistrationForm = () => {
             </div>
             <div className={styles.fieldContainer}>
             <p className={styles.fieldName}>Оберіть зображення курсу</p>
-            <InputImage name={'image'} formik={formik}/>
+            <InputImage name={'image'} formik={formik} style={styles.userImg}/>
             {errors.imgPath && touched.imgPath ? (
               <div className={styles.imageValidationError}>{errors.imgPath}</div>
             ) : null}
