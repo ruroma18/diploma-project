@@ -13,4 +13,6 @@ taskRouter.post('/createTask',
   imgUpload.imgUploadSingle,
   TaskController.createTask);
 
+taskRouter.get('/getTaskById', checkAccessToken, TaskController.getTaskById);  
+
 module.exports = taskRouter;

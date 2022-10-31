@@ -35,10 +35,25 @@ module.exports.getTasks = async (req, res, next) => {
 
     const tasks = await Task.findAll({ where: { sectionId: sectionsId } });
 
-    console.log(tasks)
-
     res.status(200).send(tasks);
   } catch (error) {
-    next(error)
+    next(error);
+  }
+};
+
+module.exports.getTaskById = async (req, res, next) => {
+  try {
+    const { query: { id } } = req;
+
+    const task = await Task.findByPk(id);
+
+    const answers = await task.getAnswers();
+
+    const inputBlock = await task.getInputBlock();
+
+    res.status(200).send({task, answers, inputBlock})
+  } catch (error) {
+    next(error);
   }
 }
+
