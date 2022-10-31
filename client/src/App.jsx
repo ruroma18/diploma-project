@@ -2,12 +2,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "pages/Main";
 import DashboardPage from "pages/Dashboard";
 import CoursePage from "pages/Course";
-import Task from "pages/Task";
 import PrivateRoute from "utils/privateRoute";
 import Registration from "pages/Registration";
 import LoginPage from "pages/Login";
 import PublicRoute from "utils/publicRoute";
 import CreationTaskPage from "pages/CreationTask";
+import TaskPage from "pages/Task";
 
 function App() {
   return (
@@ -63,7 +63,7 @@ function App() {
           path="/task/:taskId"
           element={
             <PrivateRoute>
-              <Task />
+              <TaskPage />
             </PrivateRoute>
           }
         ></Route>
