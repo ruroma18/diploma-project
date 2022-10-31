@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createTask, getTask } from "./taskThunk";
+import { createTask, getTask, getTaskById } from "./taskThunk";
 
 const initialState = {
-  taskData: [],
+  taskList: [],
+  taskData: {task: {}, answers: [], inputBlock: {}},
   loading: false
 }
 
@@ -25,9 +26,19 @@ export const taskSlice = createSlice({
     },
     [getTask.fulfilled]: (state, action) => {
       state.loading = false;
-      state.taskData = action.payload;
+      state.taskList = action.payload;
     },
     [getTask.rejected]: (state, action) => {
+      state.loading = false;
+    },
+    [getTaskById.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [getTaskById.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.taskData = action.payload;
+    },
+    [getTaskById.rejected]: (state, action) => {
       state.loading = false;
     }
   }
