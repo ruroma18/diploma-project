@@ -23,6 +23,10 @@ const validationSchema = {
   FileSchema: yup.object().shape({
     name:  yup.string().min(5, 'Назва має мати більше 5-ти символів').required('Введіть назву файлу'),
     file: yup.mixed()
+  }),
+  TaskSchema: yup.object().shape({
+    name:  yup.string().min(5, 'Назва має мати більше 5-ти символів').required('Введіть назву завдання'),
+    description:  yup.string().min(5, 'Назва має мати більше 5-ти символів').required('Введіть опис завдання')
   })
 }
 

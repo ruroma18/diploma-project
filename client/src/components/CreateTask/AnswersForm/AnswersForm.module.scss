@@ -1,0 +1,42 @@
+.addAnswerContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.answerItemContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.field {
+  border: none;
+  border-bottom: 2px solid #797676;
+  margin-bottom: 15px;
+  background-color: none;
+  font-size: 0.9rem;
+
+  &:focus {
+    border-bottom: 2px solid #71b0eb;
+  }
+}
+
+.btn {
+  padding: 5px;
+  width: 150px;
+  background-color: #4d95d8;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+
+  &:hover {
+    background-color: #2be85a;
+    color: #ffffff;
+  }
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
