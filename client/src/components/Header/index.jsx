@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData, signOut } from "redux/features/auth/authThunk";
 import CONSTANTS from "../../constants";
-import defaultUserImage from '../../img/user.png';
+import defaultUserImage from "../../img/user.png";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -14,12 +14,14 @@ const Header = () => {
     dispatch(fetchUserData());
   }, [dispatch]);
 
-  
   const { userData } = useSelector((state) => state.auth);
   const fullName = `${userData.firstName} ${userData.lastName}`;
   const navigate = useNavigate();
 
-  const setImage = () => userData.photoPath ? `${CONSTANTS.PUBLIC_IMAGE_URL}${userData.photoPath}` : defaultUserImage;
+  const setImage = () =>
+    userData.photoPath
+      ? `${CONSTANTS.PUBLIC_IMAGE_URL}${userData.photoPath}`
+      : defaultUserImage;
 
   const toCourses = () => {
     navigate(`/dashboard`);
@@ -33,20 +35,19 @@ const Header = () => {
       </div>
       <nav className={styles.coursesHeading}>
         <ul>
-          <li onClick={toCourses}>Мої курси</li>
+          <li onClick={toCourses}>Курси</li>
         </ul>
       </nav>
       <div className={styles.userContainer}>
         <p className={styles.userName}>{fullName}</p>
-        <img
-          className={styles.userImg}
-          src={setImage()}
-          alt={fullName}
-        />
+        <img className={styles.userImg} src={setImage()} alt={fullName} />
+        <button
+          className={styles.btnLogOut}
+          onClick={() => dispatch(signOut())}
+        >
+          Вихід
+        </button>
       </div>
-      <button className={styles.btnLogOut} onClick={() => dispatch(signOut())}>
-        Вихід
-      </button>
     </header>
   );
 };
