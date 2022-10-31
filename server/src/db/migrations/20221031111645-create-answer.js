@@ -16,7 +16,8 @@ module.exports = {
       isRight: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: false
+        defaultValue: false,
+        field: 'is_right'
       },
       taskId: {
         allowNull: false,
@@ -30,10 +31,12 @@ module.exports = {
         onUpdate: 'cascade'
       },
       createdAt: {
+        field: 'created_at',
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
+        field: 'updated_at',
         allowNull: false,
         type: Sequelize.DATE
       }

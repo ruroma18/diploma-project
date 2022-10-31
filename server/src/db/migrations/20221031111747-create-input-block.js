@@ -11,12 +11,12 @@ module.exports = {
       },
       posX: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.DOUBLE,
         field: 'pos_x'
       },
       posY: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.DOUBLE,
         field: 'pos_y'
       },
       height: {
@@ -39,10 +39,12 @@ module.exports = {
         onUpdate: 'cascade'
       },
       createdAt: {
+        field: 'created_at',
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
+        field: 'updated_at',
         allowNull: false,
         type: Sequelize.DATE
       }
