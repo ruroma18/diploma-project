@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.inputContainer {
+  position: absolute;
+  background-color: white;
+  border: 2px solid black;
+  opacity: 0.8;
+}
+
+.answerItem {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #bddefa;
+}

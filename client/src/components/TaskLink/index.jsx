@@ -4,11 +4,12 @@ import TaskIcon from '@mui/icons-material/Task';
 import styles from './TaskLink.module.scss';
 import { useNavigate } from "react-router-dom";
 
+
 const TaskLink = ({id}) => {
-  const { taskData } = useSelector((state) => state.task);
+  const { taskList } = useSelector((state) => state.task);
   const navigate = useNavigate()
 
-  const currentSectionTask = taskData.filter(
+  const currentSectionTask = taskList.filter(
     (task) => task.sectionId === id
   );
 
