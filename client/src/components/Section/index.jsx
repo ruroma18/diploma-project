@@ -6,6 +6,8 @@ import AddNewMaterial from "components/AddNewMaterial";
 import Material from "components/Material";
 import { getMaterials } from "redux/features/material/materialThunk";
 import AddNewTask from "components/AddNewTask";
+import TaskLink from "components/TaskLink";
+import { getTask } from "redux/features/task/taskThunk";
 
 const Section = ({ courseId }) => {
   const dispatch = useDispatch();
@@ -13,6 +15,7 @@ const Section = ({ courseId }) => {
   useEffect(() => {
     dispatch(getSections(courseId));
     dispatch(getMaterials(courseId));
+    dispatch(getTask(courseId));
   }, [dispatch, courseId]);
 
   const { sectionData } = useSelector((state) => state.section);
@@ -32,10 +35,7 @@ const Section = ({ courseId }) => {
             </div>
           ) : null}
           <Material id={section.id} />
-          {/* <div className={styles.materialWrapper}>
-            <TaskIcon />
-            <p className={styles.materialLink}>Завдання до розділу</p>
-          </div> */}
+          <TaskLink id={section.id} />
         </li>
       ))}
     </ul>

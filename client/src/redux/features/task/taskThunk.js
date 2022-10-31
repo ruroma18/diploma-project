@@ -3,8 +3,8 @@ import api from '../../../api/http';
 
 export const getTask = createAsyncThunk('task/getTask',
   async (payload) => {
-    const response = await api.get('task/getTask', {params: {id: payload}});
-    return response;
+    const response = await api.get('task/getTasks', {params: {id: payload}});
+    return response.data;
   })
 
 export const createTask = createAsyncThunk('task/createTask',

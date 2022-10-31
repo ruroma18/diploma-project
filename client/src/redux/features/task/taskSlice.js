@@ -25,7 +25,7 @@ export const taskSlice = createSlice({
     },
     [getTask.fulfilled]: (state, action) => {
       state.loading = false;
-      state.sectionData = action.payload;
+      state.taskData = action.payload;
     },
     [getTask.rejected]: (state, action) => {
       state.loading = false;
