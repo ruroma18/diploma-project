@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./InputImage.module.scss";
 
-const InputImage = ({name, formik}) => {
+const InputImage = ({name, formik, style}) => {
   const [file, setFile] = useState();
 
   const handleChange = (e) => {
@@ -23,7 +23,7 @@ const InputImage = ({name, formik}) => {
       {file ? (
         <div className={styles.imgWrapper}>
           <img
-            className={styles.imagePreview}
+            className={style}
             id="imagePreview"
             src={file}
             alt="uploadedImage"
