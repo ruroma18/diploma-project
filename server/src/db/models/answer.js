@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Answer extends Model {
 
-    static associate(models) {
+    static associate({Task}) {
       Answer.belongsTo(Task, { foreignKey: 'taskId' })
     }
   }
@@ -19,12 +19,13 @@ module.exports = (sequelize, DataTypes) => {
     {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false
     }
   }, {
     sequelize,
+    underscored: true,
     modelName: 'Answer',
-    tableName: 'answer',
-    underscored: true
+    tableName: 'answers',
   });
   return Answer;
 };

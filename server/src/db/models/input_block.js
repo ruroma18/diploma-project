@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class InputBlock extends Model {
 
-    static associate(models) {
+    static associate({Task}) {
       InputBlock.belongsTo(Task, {foreignKey: 'taskId'})
     }
   }
@@ -21,18 +21,18 @@ module.exports = (sequelize, DataTypes) => {
       field: 'pos_y'
     },
     height: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.DOUBLE,
       allowNull: false,
     },
     width: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.DOUBLE,
       allowNull: false,
     },
   }, {
     sequelize,
+    underscored: true,
     modelName: 'InputBlock',
-    tableName: 'input_block',
-    underscored: true
+    tableName: 'input_blocks',
   });
   return InputBlock;
 };
