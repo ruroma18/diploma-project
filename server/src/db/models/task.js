@@ -2,7 +2,7 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Task extends Model {
-    static associate({ Section, User }) {
+    static associate({ Section, User, Answer, InputBlock }) {
       Task.belongsTo(Section, { foreignKey: 'sectionId' })
       Task.hasMany(Answer, { foreignKey: 'taskId' }),
       Task.hasOne(InputBlock, { foreignKey: 'taskId' })
