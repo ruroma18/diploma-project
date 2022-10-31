@@ -3,19 +3,25 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Task extends Model {
     static associate({ Section, User }) {
-      Task.belongsTo(Section, {foreignKey: 'taskId'})
+      Task.belongsTo(Section, { foreignKey: 'sectionId' })
+      Task.hasMany(Answer, { foreignKey: 'taskId' }),
+      Task.hasOne(InputBlock, { foreignKey: 'taskId' })
       Task.belongsToMany(User, {
         through: 'students_to_tasks',
-        foreignKey: 'taskId'})
+        foreignKey: 'taskId'
+      })
     }
   }
   Task.init({
-    name: { 
+    name: {
       allowNull: false,
-      type: DataTypes.STRING 
+      type: DataTypes.STRING
     },
-    taskPath: {
-      field: 'task_path',
+    description: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    image: {
       type: DataTypes.STRING,
       allowNull: false
     }

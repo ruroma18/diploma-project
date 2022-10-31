@@ -13,9 +13,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      taskPath: {
+      description: {
         allowNull: false,
-        field: 'task_path',
+        type: Sequelize.STRING
+      },
+      image: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       sectionId: {
