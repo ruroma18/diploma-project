@@ -24,8 +24,6 @@ module.exports.createMaterials = async (req, res, next) => {
 
     const material = await section.createMaterial({ filePath: filename, ...body });
 
-    console.log(material)
-
     res.status(200).send(material)
 
   } catch (error) {
