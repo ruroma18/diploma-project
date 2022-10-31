@@ -7,6 +7,7 @@ import PrivateRoute from "utils/privateRoute";
 import Registration from "pages/Registration";
 import LoginPage from "pages/Login";
 import PublicRoute from "utils/publicRoute";
+import CreationTaskPage from "pages/CreationTask";
 
 function App() {
   return (
@@ -59,10 +60,19 @@ function App() {
         ></Route>
         <Route
           exact
-          path="/task"
+          path="/task/:taskId"
           element={
             <PrivateRoute>
               <Task />
+            </PrivateRoute>
+          }
+        ></Route>
+                <Route
+          exact
+          path="/createTask/:sectionId"
+          element={
+            <PrivateRoute>
+              <CreationTaskPage />
             </PrivateRoute>
           }
         ></Route>
