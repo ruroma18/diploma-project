@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 const TaskLink = ({id}) => {
   const { taskData } = useSelector((state) => state.task);
-  console.log(taskData)
   const navigate = useNavigate()
 
   const currentSectionTask = taskData.filter(
