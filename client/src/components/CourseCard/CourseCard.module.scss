@@ -4,14 +4,17 @@
   justify-content: center;
   align-items: center;
   margin: 30px;
+  border-bottom: 2px solid #d6d3d3;
+}
+
+.imgWrapper {
   width: 280px;
   height: 200px;
-  border-bottom: 2px solid #d6d3d3;
-
   transition: opacity 0.4s ease;
 
   &:hover {
     opacity: 0.5;
+    cursor: pointer;
   }
 }
 
@@ -21,8 +24,22 @@
   background-size: cover;
 }
 
+.nameContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
 .heading {
   color: black;
   font-size: 1em;
-  padding: 10px 0 15px 0;
+  padding: 10px 0 5px 0;
+}
+
+.deleteIcon {
+  margin-left: 10px;
+  font-size: 1.3rem;
+  color: rgb(238, 105, 105);
+  cursor: pointer;
 }
