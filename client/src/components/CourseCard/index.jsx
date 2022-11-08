@@ -1,20 +1,22 @@
 import React from "react";
 import CONSTANTS from "../../constants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import styles from "./CourseCard.module.scss";
+import { deleteCourse } from "redux/features/course/courseThunk";
 
 const CourseCard = ({ userRole }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { courseData } = useSelector((state) => state.course);
 
   const getCourse = (id) => {
     navigate(`/course/${id}`);
   };
 
-  const deleteCourse = (id) => {
-    console.log(id)
+  const handleDeleteCourse = (id) => {
+    dispatch(deleteCourse(id));
   }
 
   return (
@@ -37,7 +39,7 @@ const CourseCard = ({ userRole }) => {
             {userRole === CONSTANTS.TEACHER ? (
               <DeleteIcon
                 className={styles.deleteIcon}
-                onClick={() => deleteCourse(course.id)}
+                onClick={() => handleDeleteCourse(course.id)}
               />
             ) : null}
           </div>

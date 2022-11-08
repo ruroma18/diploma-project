@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createCourse, getCourseById, getCourses } from "./courseThunk";
+import { createCourse, deleteCourse, getCourseById, getCourses } from "./courseThunk";
 
 const initialState = {
   selectedCourse: {},
@@ -45,6 +45,15 @@ export const courseSlice = createSlice({
     [getCourseById.rejected]: (state, action) => {
       state.loading = false;
       state.selectedCourse = {};
+    },
+    [deleteCourse.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [deleteCourse.fulfilled]: (state, action) => {
+      state.loading = false;
+    },
+    [deleteCourse.rejected]: (state, action) => {
+      state.loading = false;
     },
   }
 });

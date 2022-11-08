@@ -1,5 +1,6 @@
-const { Course } = require('../db/models');
+const { Course, Task, Material, Section, Answer, InputBlock } = require('../db/models');
 const CONSTANTS = require('../constants');
+const createHttpError = require('http-errors');
 
 module.exports.getCourses = async (req, res, next) => {
   try {
@@ -42,5 +43,31 @@ module.exports.getCourseById = async (req, res, next) => {
 
   } catch (error) {
     next(error)
+  }
+};
+
+module.exports.deleteCourse = async (req, res, next) => {
+  try {
+    const { course, tasksId, sectionsId } = req;
+
+    await Answer.destroy({where: {taskId: tasksId}});
+    
+    await InputBlock.destroy({where: {taskId: tasksId}});
+
+    await Task.destroy({where: {sectionId: sectionsId}});
+
+    await Material.destroy({where: {sectionId: sectionsId}});
+
+    await Section.destroy({where: {courseId: course.id}})
+
+    const removedCourse = await Course.destroy({where: {id: course.id}});
+
+    if(removedCourse !== 1) {
+      return next(createHttpError(404, 'Course not found!'));
+    }
+
+    res.status(200).send('Course removed!');
+  } catch (error) {
+    next(error);
   }
 }

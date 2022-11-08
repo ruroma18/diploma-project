@@ -17,4 +17,10 @@ export const getCourseById = createAsyncThunk('course/getCourseById',
   async(payload) => {
     const response = await api.get('course/getCourse', {params: {id: payload}});
     return response.data
+  });
+
+export const deleteCourse = createAsyncThunk('course/delteCourse', 
+  async(payload) => {
+    await api.delete('course/deleteCourse', {params: {id: payload}});
+    window.location.reload();
   })  
