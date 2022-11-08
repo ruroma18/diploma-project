@@ -18,8 +18,8 @@ const Welcome = () => {
       <div className={styles.textContainer}>
         <h1 className={styles.heading}>Вітаю на UniStudy</h1>
         <p className={styles.text}>Перший український сайт інтерактивних модулей для навчання</p>
-        <p className={styles.text}>Зареєструйтесь як вчитель та створюйте курси та додавайте до них завдання</p>
-        <p className={styles.text}>Зареєструйтесь як учень та вивчайте цікаві курси та виконуйте завдання</p>
+        <p className={styles.text}>Зареєструйтесь як вчитель та створюйте курси, наповнюйте їх матеріалом та створюйте неймовірні інтерактивні завдання</p>
+        <p className={styles.text}>Або обирайте роль учня та вивчайте цікаві курси і виконуйте інтерактивні завдання</p>
       </div>
       <div className={styles.btnContainer}>
         <button className={styles.btn} onClick={() => logIn()}>Вхід</button>
