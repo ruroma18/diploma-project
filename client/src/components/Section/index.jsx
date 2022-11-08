@@ -8,6 +8,7 @@ import { getMaterials } from "redux/features/material/materialThunk";
 import AddNewTask from "components/AddNewTask";
 import TaskLink from "components/TaskLink";
 import { getTask } from "redux/features/task/taskThunk";
+import CONSTANTS from "../../constants";
 
 const Section = ({ courseId }) => {
   const dispatch = useDispatch();
@@ -28,14 +29,14 @@ const Section = ({ courseId }) => {
           <h3 className={styles.itemHeading}>
             Розділ {id + 1}. {section.name}
           </h3>
-          {userData.role === "teacher" ? (
+          {userData.role === CONSTANTS.TEACHER ? (
             <div>
               <AddNewMaterial sectionId={section.id} />
               <AddNewTask sectionId={section.id} />
             </div>
           ) : null}
-          <Material id={section.id} />
-          <TaskLink id={section.id} />
+          <Material id={section.id} userRole={userData.role}/>
+          <TaskLink id={section.id} userRole={userData.role}/>
         </li>
       ))}
     </ul>

@@ -3,7 +3,7 @@ import { Formik, Form, Field, useFormik } from "formik";
 import styles from "./RegistrationForm.module.scss";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import CONSTANTS from "../../constants";
 import validationSchema from "../../validation/validationSchema";
 import { register } from "redux/features/auth/authThunk";
 import InputImage from "components/InputComponents/InputImage";
@@ -116,8 +116,8 @@ const RegistrationForm = () => {
                 className={styles.field}
                 type="select"
               >
-                <option value="teacher">Вчитель</option>
-                <option value="student">Учень</option>
+                <option selected value={CONSTANTS.TEACHER}>Вчитель</option>
+                <option value={CONSTANTS.TEACHER}>Учень</option>
               </Field>
               {errors.role && touched.role ? (
                 <div className={styles.validationError}>{errors.role}</div>
