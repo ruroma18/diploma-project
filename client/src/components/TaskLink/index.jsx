@@ -1,33 +1,39 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import TaskIcon from '@mui/icons-material/Task';
-import styles from './TaskLink.module.scss';
+import TaskIcon from "@mui/icons-material/Task";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
+import CONSTANTS from "../../constants";
+import styles from "./TaskLink.module.scss";
 
-
-const TaskLink = ({id}) => {
+const TaskLink = ({ id, userRole }) => {
   const { taskList } = useSelector((state) => state.task);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const currentSectionTask = taskList.filter(
-    (task) => task.sectionId === id
-  );
+  const currentSectionTask = taskList.filter((task) => task.sectionId === id);
 
   const goToTask = (taskId) => {
-    navigate(`/task/${taskId}`)
-  }
+    navigate(`/task/${taskId}`);
+  };
+
+  const deleteTask = (id) => {
+    console.log(id);
+  };
 
   return (
     <>
       {currentSectionTask.map((task) => (
-        <div
-          className={styles.materialWrapper}
-          key={`${task.id}-${task.name}`}
-        >
+        <div className={styles.materialWrapper} key={`${task.id}-${task.name}`}>
           <TaskIcon />
-          <p className={styles.materialLink} onClick={() => goToTask(task.id)} >
+          <p className={styles.materialLink} onClick={() => goToTask(task.id)}>
             {task.name}
           </p>
+          {userRole === CONSTANTS.TEACHER ? (
+            <DeleteIcon
+              className={styles.deleteIcon}
+              onClick={() => deleteTask(task.id)}
+            />
+          ) : null}
         </div>
       ))}
     </>
