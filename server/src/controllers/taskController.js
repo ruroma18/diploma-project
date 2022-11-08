@@ -25,13 +25,7 @@ module.exports.createTask = async (req, res, next) => {
 
 module.exports.getTasks = async (req, res, next) => {
   try {
-    const { course } = req;
-
-    const sectionsId = await Section.findAll({
-      where: { courseId: course.id },
-      attributes: ['id']
-    })
-      .then(sectionsId => sectionsId.map(id => id.id));
+    const { sectionsId } = req;
 
     const tasks = await Task.findAll({ where: { sectionId: sectionsId } });
 

@@ -2,12 +2,7 @@ const { Section, Material } = require('../db/models');
 
 module.exports.getMaterials = async (req, res, next) => {
   try {
-    const { course } = req;
-
-    const sectionsId = await Section.findAll({ 
-      where: { courseId: course.id }, 
-      attributes: ['id'] })
-      .then(sectionsId => sectionsId.map(id => id.id));
+    const { sectionsId } = req;
 
     const materials = await Material.findAll({where: {sectionId: sectionsId}});
 
