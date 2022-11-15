@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {getSections, createSection} from './sectionThunk';
+import {getSections, createSection, deleteSection} from './sectionThunk';
 
 const initialState = {
   sectionData: [],
@@ -28,6 +28,15 @@ export const sectionSlice = createSlice({
       state.sectionData = action.payload;
     },
     [getSections.rejected]: (state, action) => {
+      state.loading = false;
+    },
+    [deleteSection.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [deleteSection.fulfilled]: (state, action) => {
+      state.loading = false;
+    },
+    [deleteSection.rejected]: (state, action) => {
       state.loading = false;
     }
   }

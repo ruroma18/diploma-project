@@ -1,4 +1,6 @@
 .itemHeading {
+  display: flex;
+  align-items: center;
   padding: 5px;
   margin: 5px;
   border: 2px solid #9dc2e5;
@@ -26,4 +28,11 @@
   &:hover {
     cursor: pointer;
   }
+}
+
+.deleteIcon {
+  margin-left: 10px;
+  font-size: 1.3rem;
+  color: rgb(238, 105, 105);
+  cursor: pointer;
 }

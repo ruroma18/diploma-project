@@ -26,7 +26,7 @@ const CourseContent = () => {
       {userData.role === CONSTANTS.TEACHER ? (
         <AddNewSection courseId={courseId} />
       ) : null}
-      <CourseSection courseId={courseId}/>
+      <CourseSection courseId={courseId} userRole={userData.role}/>
     </article>
   );
 };
