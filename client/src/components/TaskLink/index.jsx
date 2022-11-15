@@ -1,14 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TaskIcon from "@mui/icons-material/Task";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 import CONSTANTS from "../../constants";
 import styles from "./TaskLink.module.scss";
+import { deleteTask } from "redux/features/task/taskThunk";
 
 const TaskLink = ({ id, userRole }) => {
   const { taskList } = useSelector((state) => state.task);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const currentSectionTask = taskList.filter((task) => task.sectionId === id);
 
@@ -16,8 +18,8 @@ const TaskLink = ({ id, userRole }) => {
     navigate(`/task/${taskId}`);
   };
 
-  const deleteTask = (id) => {
-    console.log(id);
+  const handleDeleteTask = (id) => {
+    dispatch(deleteTask(id));
   };
 
   return (
@@ -31,7 +33,7 @@ const TaskLink = ({ id, userRole }) => {
           {userRole === CONSTANTS.TEACHER ? (
             <DeleteIcon
               className={styles.deleteIcon}
-              onClick={() => deleteTask(task.id)}
+              onClick={() => handleDeleteTask(task.id)}
             />
           ) : null}
         </div>

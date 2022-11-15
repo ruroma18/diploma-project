@@ -1,4 +1,5 @@
-const { Section, Task } = require('../db/models');
+const { InputBlock, Answer, Task } = require('../db/models');
+const createHttpError = require('http-errors');
 
 module.exports.createTask = async (req, res, next) => {
   try {
@@ -45,9 +46,29 @@ module.exports.getTaskById = async (req, res, next) => {
 
     const inputBlock = await task.getInputBlock();
 
-    res.status(200).send({task, answers, inputBlock})
+    res.status(200).send({ task, answers, inputBlock })
   } catch (error) {
     next(error);
+  }
+};
+
+module.exports.deleteTask = async (req, res, next) => {
+  try {
+    const { id } = req.query;
+
+    await InputBlock.destroy({ where: { taskId: id } });
+
+    await Answer.destroy({where: {taskId: id}});
+
+    const deletedTask = await Task.destroy({where: {id}});
+
+    if(deletedTask !== 1) {
+      return next(createHttpError(404, 'Task not found'));
+    }
+
+    res.status(200).send('Task deleted!');
+  } catch (error) {
+    next(error)
   }
 }
 

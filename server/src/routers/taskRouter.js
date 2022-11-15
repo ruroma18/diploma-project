@@ -19,4 +19,6 @@ taskRouter.post('/createTask',
 
 taskRouter.get('/getTaskById', checkAccessToken, TaskController.getTaskById);
 
+taskRouter.delete('/deleteTask', checkAccessToken, TaskController.deleteTask);
+
 module.exports = taskRouter;

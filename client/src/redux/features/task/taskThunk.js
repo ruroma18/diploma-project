@@ -16,4 +16,10 @@ export const getTaskById = createAsyncThunk('task/getTaskById',
   async (payload) => {
     const response = await api.get('task/getTaskById', {params: {id: payload}});
     return response.data;
+  });
+
+export const deleteTask = createAsyncThunk('task/deleteTask',
+  async(payload) => {
+    await api.delete('task/deleteTask', {params: {id: payload}});
+    window.location.reload();
   })  
