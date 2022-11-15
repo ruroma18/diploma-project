@@ -1,19 +1,21 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ArticleIcon from "@mui/icons-material/Article";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CONSTANTS from "../../constants";
 import styles from "./Material.module.scss";
+import { deleteMaterial } from "redux/features/material/materialThunk";
 
 const Material = ({ id, userRole }) => {
   const { materialData } = useSelector((state) => state.material);
+  const dispatch = useDispatch();
 
   const currentSectionMaterial = materialData.filter(
     (material) => material.sectionId === id
   );
 
-  const deleteMaterial = (id) => {
-    console.log(id);
+  const handleDeleteMaterial = (id) => {
+    dispatch(deleteMaterial(id));
   };
 
   return (
@@ -33,7 +35,7 @@ const Material = ({ id, userRole }) => {
           {userRole === CONSTANTS.TEACHER ? (
             <DeleteIcon
               className={styles.deleteIcon}
-              onClick={() => deleteMaterial(material.id)}
+              onClick={() => handleDeleteMaterial(material.id)}
             />
           ) : null}
         </div>

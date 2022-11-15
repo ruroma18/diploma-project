@@ -17,4 +17,6 @@ materialRouter.post('/createMaterial',
   fileUpload.fileUploadSinge,
   MaterialController.createMaterials);
 
+materialRouter.delete('/deleteMaterial', checkAccessToken, MaterialController.deleteMaterial);  
+
 module.exports = materialRouter;

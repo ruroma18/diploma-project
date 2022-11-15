@@ -1,10 +1,11 @@
-const { Section, Material } = require('../db/models');
+const { Material } = require('../db/models');
+const createHttpError = require('http-errors');
 
 module.exports.getMaterials = async (req, res, next) => {
   try {
     const { sectionsId } = req;
 
-    const materials = await Material.findAll({where: {sectionId: sectionsId}});
+    const materials = await Material.findAll({ where: { sectionId: sectionsId } });
 
     res.status(200).send(materials);
   } catch (error) {
@@ -23,5 +24,22 @@ module.exports.createMaterials = async (req, res, next) => {
 
   } catch (error) {
     next(error);
+  }
+};
+
+module.exports.deleteMaterial = async (req, res, next) => {
+  try {
+
+    const { id } = req.query;
+
+    const deletedMaterial = await Material.destroy({ where: { id } });
+
+    if(deletedMaterial !== 1) {
+      return next(createHttpError(404, 'Material not found!'));
+    }
+
+    res.status(200).send('Material deleted!')
+  } catch (error) {
+    next(error)
   }
 }

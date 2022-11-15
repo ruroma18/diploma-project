@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createMaterial, getMaterials } from "./materialThunk";
+import { createMaterial, deleteMaterial, getMaterials } from "./materialThunk";
 
 const initialState = {
   materialData: [],
@@ -28,6 +28,15 @@ export const materialSlice = createSlice({
       state.materialData = action.payload;
     },
     [getMaterials.rejected]: (state, action) => {
+      state.loading = false;
+    },
+    [deleteMaterial.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [deleteMaterial.fulfilled]: (state, action) => {
+      state.loading = false;
+    },
+    [deleteMaterial.rejected]: (state, action) => {
       state.loading = false;
     },
   }

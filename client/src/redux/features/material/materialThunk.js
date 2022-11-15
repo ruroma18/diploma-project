@@ -11,4 +11,10 @@ export const createMaterial = createAsyncThunk('/material/createMaterial',
   async (payload) => {
     await api.post('material/createMaterial', payload.data, {params: {id: payload.sectionId}})
     window.location.reload();
-  })  
+  });
+
+export const deleteMaterial = createAsyncThunk('/material/deleteMaterial',
+  async(payload) => {
+    await api.delete('material/deleteMaterial', {params: {id: payload}});
+    window.location.reload();
+  });
