@@ -116,8 +116,8 @@ const RegistrationForm = () => {
                 className={styles.field}
                 type="select"
               >
-                <option selected value={CONSTANTS.TEACHER}>Вчитель</option>
-                <option value={CONSTANTS.TEACHER}>Учень</option>
+                <option value={CONSTANTS.TEACHER}>Вчитель</option>
+                <option value={CONSTANTS.STUDENT}>Учень</option>
               </Field>
               {errors.role && touched.role ? (
                 <div className={styles.validationError}>{errors.role}</div>
